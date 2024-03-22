@@ -1,0 +1,32 @@
+# Download the Mullvad signing key
+sudo curl -fsSLo /usr/share/keyrings/mullvad-keyring.asc https://repository.mullvad.net/deb/mullvad-keyring.asc
+
+# Add the Mullvad repository server to apt
+echo "deb [signed-by=/usr/share/keyrings/mullvad-keyring.asc arch=$( dpkg --print-architecture )] https://repository.mullvad.net/deb/stable $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/mullvad.list
+# Or add the Mullvad BETA repository server to apt
+echo "deb [signed-by=/usr/share/keyrings/mullvad-keyring.asc arch=$( dpkg --print-architecture )] https://repository.mullvad.net/deb/beta $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/mullvad.list
+
+# Install the package
+sudo apt update
+sudo apt install mullvad-vpn
+
+# Print out mullvad commands
+mullvad
+
+# Login to mullvad account
+mullvad account login 1234123412341234
+
+# Show account info
+mullvad account get
+
+# List the relays in the region desired
+mullvad relay list | grep -i 'region' 
+
+# Connecting to a server in Sweden (se), in the city of Malmö (mma)
+mullvad relay set location se mma
+
+# Select a specific server
+mullvad relay set location se-mma-wg-001
+
+# Connect to vpn on specific server
+mullvad connect

@@ -1,0 +1,44 @@
+Traditional method of compiling software, without ABS
+
+If you are not familiar with manually compiling software from source, you should know that most packages (but not all) can be built from source in this traditional way:
+
+    Download source tarball from remote server, using web browser, ftp, wget or alternate method. 
+
+    Decompress the source file: 
+
+$ tar -xzf foo-0.99.tar.gz
+
+or
+
+$ tar -xjf foo-0.99.tar.bz2
+
+    Enter the directory: 
+
+$ cd foo-0.99
+
+    Configure the package. Generally, there is a script called configure in the source directory that is used to configure the package (add or remove support for things, choose the install destination, etc.) and check that your computer has all the software needed by the package. It can be run by: 
+
+$ ./configure [option]
+
+You should first try the help to better understand how it works:
+
+$ ./configure --help
+
+If a --prefix option is not passed to the script, most scripts will use /usr/local as the install path, but others will use /usr. For the sake of consistency, it is generally advised to pass the --prefix=/usr/local option. It is good practice to install personal programs in /usr/local, and to have the ones being managed by the distro in /usr. This ensures personal program versions can coexist with those being managed by the distro's package manager -- in Arch's case, pacman.
+
+$ ./configure --prefix=/usr/local
+
+    Compile the sources: 
+
+$ make
+
+    Install: 
+
+# make install
+
+    Removal would be accomplished by entering the source directory and running: 
+
+# make uninstall
+
+However, you should always read the INSTALL file to know how the package should be built and installed! Not all packages use the configure; make; make install system!
+Note: The above traditional method of compiling source tarballs can, of course, still be used on Arch Linux. However, if you are not careful, files may become scattered throughout the filesystem that pacman (or any other package manager) will be unaware of. You should only use this method if you are experienced at manual compilation and system software tracking, as it can lead to future problems on Arch (or any distribution) if using a package manager.

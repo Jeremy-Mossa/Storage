@@ -1,0 +1,27 @@
+split -b 1M <archive-name>.tar.gz "parts-prefix"
+
+-b 1M will split the file into 1 Megabytes size of file.The
+"part-prefix" will give the prefix name of our parts of
+file.
+
+Example:
+
+We have a video file name video.avi that have size of 30 MB.
+We will split it into 5 MB per parts. We can do :
+
+$ tar -cvvzf test.tar.gz  video.avi
+
+$ split -v 5M test.tar.gz vid
+
+This command will create the archive file name test.tar.gz.
+Then, it will split into (approximately) six parts of 5MB
+file. They have prefix "vid", so the result will be vidaa,
+vidab, vidac, vidad, vidae, and vidaf. We can use number
+instead of letter on the suffix by adding -d option on the
+split command
+
+$ split -v 5M -d test.tar.gz video.avi
+
+ to join this file, we can use cat command.
+
+$ cat vid* > test.tar.gz 

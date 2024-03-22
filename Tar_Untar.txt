@@ -1,0 +1,12 @@
+﻿To compress:
+tar -zcvf archive_name.tar.gz directory_to_compress
+
+To decompress an archive use the following syntax:
+tar -zxvf archive_name.tar.gz
+
+Lastly, the extensions .tgz and .tar.gz are equivalent; they both signify
+a tar file zipped with gzip.
+
+Within the Info interface, press  ?  (the question mark) for a list of
+commands.
+

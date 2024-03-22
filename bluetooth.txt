@@ -1,0 +1,10 @@
+# Start the bluetooth device if down
+sudo systemctl restart bluetooth
+
+# List the device
+hcitool dev
+
+# Scan for devices
+hcitool scan
+
+# Perixx mouse MAC: 20:20:01:70:DC:3E

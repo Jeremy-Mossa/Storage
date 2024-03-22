@@ -1,0 +1,13 @@
+(sleep 3 && /usr/bin/nm-applet --sm-disable) &
+tint2 &
+conky -q &
+volumeicon -b &
+nitrogen --restore &
+#xcompmgr &
+xbacklight -set 0 &
+#/usr/bin/synclient TouchpadOff=1 &
+#batti &
+#fbxkb &
+xset -dpms &
+xset s 0
+xset s noblank

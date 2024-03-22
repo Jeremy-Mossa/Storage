@@ -1,0 +1,14 @@
+# Install git, then navigate to the development directory. Initialize git:
+# This will create a hidden .git directory in that dev directory
+
+git init
+
+# Add a remote, which is like a remote control from local machine to github
+# And make it for ssh, after setting up ssh and copying rsa.pub key to github
+# The name of the remote in this case is ssh
+
+git add ssh ssh://git@github.com/<username>/<repository_name> 
+
+# To update github repository (master branch) to match local machine:
+
+git push ssh master

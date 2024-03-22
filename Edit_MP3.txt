@@ -1,0 +1,3 @@
+##
+
+ffmpeg -i input.mp3 -acodec copy -ss 00:00:00 -t 00:01:23.500 output.mp3

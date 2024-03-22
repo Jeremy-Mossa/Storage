@@ -1,0 +1,6 @@
+To copy a bootable image from a folder to a usb drive
+
+Make sure the usb device is unmounted.
+Use /dev/sd[x] not /dev/sd[x]1
+
+sudo dd if=Downloads/archlinux.iso of=/dev/sdb bs=4M 

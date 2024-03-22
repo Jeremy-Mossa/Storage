@@ -1,0 +1,6 @@
+# Create an rsa key, and press enter at any prompt for password
+ssh-keygen -t rsa
+# Copy generated key to remote computer
+scp ~/.ssh/id_rsa.pub user@sremote_host:~/.ssh/authorized_keys
+# Now edit the files from 'user@characters' to 'user@192...', then
+ssh-add

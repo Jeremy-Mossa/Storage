@@ -1,0 +1,68 @@
+Check brightness levels by running this command as root:
+
+    cat /sys/class/backlight/acpi_video0/max_brightness 
+
+    # (my laptop max brightness is 20)
+
+    Set you screen brightness to minimum and check current level by evoking next command
+
+    cat /sys/class/backlight/acpi_video0/brightness 
+
+    (my laptop min brightness level is 0;)
+
+    Edit /etc/rc.local and add before exit 0 the following line:
+
+    sudo bash -c "echo 3 > /sys/class/backlight/acpi_video0/brightness"
+    echo YOUR_VALUE > /sys/class/backlight/acpi_video0/brightness
+
+From now on this brightness level will be set every time you start your computer.
+
+########################################
+
+gksudo gedit /usr/local/bin/brightness_changer.py
+
+Paste below code,
+
+#!/usr/bin/python
+
+import dbus
+bus = dbus.SessionBus()
+proxy = bus.get_object('org.gnome.SettingsDaemon',
+                       '/org/gnome/SettingsDaemon/Power')
+iface = dbus.Interface(proxy, dbus_interface='org.gnome.SettingsDaemon.Power.Screen')
+iface.SetPercentage(70)
+
+Save it. Then issue command,
+
+sudo chmod 755 /usr/local/bin/brightness_changer.py
+
+Open Startup Applications,
+Give path as /usr/local/bin/brightness_changer.py in command and Save it.
+
+Now whenever you login, brightness will be set to 70.
+
+########################################
+ 4 down vote accepted
+	
+
+If you just want to change and save the screen brightness only, you can use xbacklight
+
+     sudo apt-get install xbacklight
+
+after installing, type command to set the screen brightness easily
+
+     xbacklight -set `num`
+
+the num is percentage of your screen brightness.
+An easier way to set brightness and contrast
+
+     sudo setpci -s `00:02.0` F4.B=`XX` 
+
+to set brightness, 00:02.0 is your VGA device code.XX is hexadecimal form 00 to FF
+
+use lspci command to find out your VGA device code.
+
+     xgamma -gamma `X`
+
+to set contrast,X from 0 to 1
+

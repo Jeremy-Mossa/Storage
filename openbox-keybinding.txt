@@ -1,0 +1,6 @@
+Edit rc.xml file, usually located in ~/.config/openbox/rc.xml
+find the keyboard section
+
+<keybind> key="C-A-T" action="Execute" command=terminal" />
+
+the folder and file may be MIA by default, so create them

@@ -1,0 +1,8 @@
+# Convert all .jpg files to .pdf files
+I=1; for i in $(ls | sort -n); do convert $i $I.pdf; ((I++)); done
+
+# Merge .pdf files to one .pdf file
+pdftk $(ls | sort -n) cat output out.pdf
+
+# Rotate all pages in .pdf file clockwise 90 degrees
+pdftk in.pdf cat 1-endE output out.pdf

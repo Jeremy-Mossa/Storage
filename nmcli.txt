@@ -1,0 +1,14 @@
+# Print out the current connections
+nmcli
+
+# Check status of WiFi adapter
+nmcli dev status
+
+# if disabled, enable with:
+nmcli radio wifi on
+
+# Scan for available networks
+nmcli dev wifi list
+
+# This connects to the phone hotspot 
+nmcli dev wifi connect Xperia5iii password the_password 

@@ -1,0 +1,2 @@
+# Install pdftk
+pdftk old.pdf cat 1-9 26-end output new.pdf

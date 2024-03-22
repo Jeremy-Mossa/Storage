@@ -1,0 +1,41 @@
+# Case statements are another conditional construct that comes in handy. 
+# Here's an example snippet:
+
+case "${x##*.}" in
+     gz)
+           gzunpack ${SROOT}/${x}
+           ;;
+     bz2)
+           bz2unpack ${SROOT}/${x}
+           ;;
+     *)
+           echo "Archive format not recognized."
+           exit
+           ;;
+esac                                      
+
+################################################
+
+# In bash, you can even define functions, similar to those 
+# in other procedural languages like Pascal and C. In bash, 
+# functions can even accept arguments, using a system very 
+# similar to the way scripts accept command-line arguments:
+
+tarview() {
+    echo -n "Displaying contents of $1 "
+    if [ ${1##*.} = tar ]
+    then
+        echo "(uncompressed tar)"
+        tar tvf $1
+    elif [ ${1##*.} = gz ]
+    then
+        echo "(gzip-compressed tar)"
+        tar tzvf $1
+    elif [ ${1##*.} = bz2 ]
+    then
+        echo "(bzip2-compressed tar)"
+        cat $1 | bzip2 -d | tar tvf -
+    fi
+}
+
+##################################################

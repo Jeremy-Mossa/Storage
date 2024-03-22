@@ -1,0 +1,6 @@
+# How to install libreoffice as outlined on arch wiki
+
+sudo pacman -S libreoffice-{common,base,calc,draw,impress,math,writer,gnome,kde4,sdk,sdk-doc}
+
+Install db
+May have to install libpng14 and libpng15 with packer

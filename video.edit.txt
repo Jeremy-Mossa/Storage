@@ -1,0 +1,11 @@
+
+Video editing in Linux
+~~~~~~~~~~~~~~~~~~~~~~
+
+ffmpeg -i input.of.file.avi -vcodec copy -acodec 
+copy -ss 00:00:00 -t 01:00:10 output.of.file.avi
+(join lines above)
+
+# -i is input
+# -ss is start time of clip
+# -t is finish time of clip

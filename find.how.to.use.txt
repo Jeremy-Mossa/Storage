@@ -1,0 +1,12 @@
+# How to use the find command from Linux Cookbook 2nd.
+
+# List all files with "txt" in the name--anywhere in
+# in the root directory--regardless of case use
+sudo find / -iname '*txt*'
+
+# List all files in the current directory tree whose
+# relative path names have either "net" or "comm"
+# anywhere in them us
+find . -regex '.*\(net\|comm\).*'
+
+

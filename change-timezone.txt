@@ -1,0 +1,8 @@
+sudo unlink /etc/localtime
+
+# Link the new timezone, e.g. Los Angeles or PST
+sudo ln -s /usr/share/zoneinfo/America/Los_Angeles
+
+# To find timezone for PST, for example
+timedatectl list-timezones | grep America
+

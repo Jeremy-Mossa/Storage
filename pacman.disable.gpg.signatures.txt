@@ -1,0 +1,4 @@
+# write in /etc/pacman.d/pacman.conf
+# this will disable pgp so that it actually works
+
+Siglevel = Never 

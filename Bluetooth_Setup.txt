@@ -1,0 +1,17 @@
+##
+Install bluez bluez-compat
+
+if systemd does not load module for bluetooth, then:
+# modprobe -v btusb bluetooth hidp l2cap
+
+show bluetooth devices:
+# hciconfig
+
+scan for device:
+# hcitool scan
+
+connect the device:
+hidd --search
+hcitool inq
+hidd --connect <bdaddress>
+hidd --show

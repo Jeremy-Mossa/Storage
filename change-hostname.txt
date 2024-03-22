@@ -1,0 +1,3 @@
+sudo hostnamectl set-hostname new_hostname
+sudo vi /etc/hostname # to check if hostname is changed
+sudo vi /etc/hosts # change the (usually) second line

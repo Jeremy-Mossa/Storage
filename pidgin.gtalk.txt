@@ -1,0 +1,7 @@
+# Set up pidgin for gtalk
+
+Protocol is XMPP
+Screen Name is Google username without "@" symbol or domain
+
+Server gmail.com
+Done.

@@ -1,0 +1,3 @@
+install uif2iso
+uif2iso [input.uif] [output.iso]
+then extract iso

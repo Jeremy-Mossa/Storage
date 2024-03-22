@@ -1,0 +1,1 @@
+/usr/share/doc/xxxterm/examples/xxxterm.conf.gz

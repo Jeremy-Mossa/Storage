@@ -1,0 +1,4 @@
+##
+
+for i in `ls | sort -n`; do pdftk $i rotate 1-endright output out; rm $i; mv out $i; done
+

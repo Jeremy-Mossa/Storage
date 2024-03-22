@@ -1,0 +1,2 @@
+## This will rename files, replacing spaces with underscores
+for f in *; do mv "$f" `echo $f | tr ' ' '_'`; done

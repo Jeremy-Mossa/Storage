@@ -1,0 +1,84 @@
+# Mounting an ISO file as a file system:
+
+mount -t iso9660 -o loop
+/home/user1/RedHat-9.0-i386-Disk1.iso /mnt/iso-1
+
+# This can also be mounted using an entry in the file:
+# /etc/fstab
+# /home/user1/RedHat-9.0-i386-Disk1.iso /mnt/iso-1 iso9660
+# loop,ro 0 3
+
+# Blank a cd-rw
+cdrecord dev=/dev/disk/by-label/path blank=fast
+
+# Burna an .iso file onto a cd
+cdrecord -v -dao -speed=2 dev=/dev/disk/by-label/"whatever" /pathto/file.iso
+
+# Copy a simple video DVD with Linux: Rip: Create the ISO
+# image with mkisofs as detailed above.  Copy a DVD and create
+# ISO image file: (Paths reflect Fedora Core 3 / Linux kernel
+# 2.6 mount point: /media/cdrecorder) Examples: 
+
+mkisofs -pad -J -R -osomedvd.iso -graft-points
+"/AUDIO_TS=/media/cdrecorder/AUDIO_TS"
+"/VIDEO_TS=/media/cdrecorder/VIDEO_TS" 
+
+mkisofs -dvd-video -osomedvd.iso -graft-points
+"/AUDIO_TS=/media/cdrecorder/AUDIO_TS"
+"/VIDEO_TS=/media/cdrecorder/VIDEO_TS" 
+
+# (Use option
+# -dvd-video to generate a DVD-Video compliant UDF file
+# system. This will sort files appropriately and add padding.
+# File video names must be in upper case.)
+
+# Burn: Burn DVD with Linux and the growisofs command.
+# Since growisofs is also a front-end to mkisofs, one can
+# append mkisofs commands: Examples: 
+
+growisofs -dvd-compat -Z /dev/dvd=somedvd.iso -speed=2 
+
+# Note: /dev/dvd and
+# /dev/dvdwriter are soft links to /dev/hdc Example of burning
+# DVD using "dvdrecord": Linux 2.6 kernel: 
+
+dvdrecord speed=1
+-dao dev=ATA:1,0,0 CourtneyDVD.iso 
+
+Linux 2.4 kernel:
+dvdrecord speed=1 -dao dev=1,0,0 CourtneyDVD.iso
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Blanking a rewritable DVD: 
+
+growisofs -Z /dev/dvd=/dev/zero 
+
+# Not required before burning but erases
+# sensitive data.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Burning a data DVD: 
+
+growisofs -dvd-compat -speed=2 -Z
+/dev/dvd -R -J -pad /dir-path/file1 /dir-path/file2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Burn data file to DVD: 
+
+growisofs -Z /dev/dvd -R -J /dir/file-name
+
+# Burning a data backup DVD using more mkisofs commands:
+# (works on DVD+R and double layer DVD+R DL - Fedora Core 3)
+# Example 1: 
+
+growisofs -speed=8 -Z /dev/dvd -R -J
+-allow-multidot -allow-leading-dots -l -pad -graft-points
+"/home/user1=/home/user1" 
+
+# (may not be DOS compatable because
+# of long file name support, possible leading dot or multidot
+# file names, but do you really care?) Example 2: 
+
+growisofs -dvd-compat speed=2 -Z /dev/dvd -R -J -pad 
+-graft-points "/DirectoryNameA=/home/user1/DirectoryNameA"
+"/SubDirectoryNameC=/home/user1/DirectoryNameB/SubDirectoryNameC"
+
+# (write a DVD which MS/Windows can read - but not MS/DOS due
+# to the "-l" option and long file names)

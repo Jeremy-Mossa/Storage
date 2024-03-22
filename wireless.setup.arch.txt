@@ -1,0 +1,45 @@
+# First identify card and find if supported by the linux kernel supports it.
+lspci | grep -i net
+
+# For a usb device use
+lsusb
+
+# If not listed, then it is likely supported in Windows. Use ndiswrapper.
+# The .inf and .sys files will be needed from the windows install.
+# For only wireless Internet, use wireless_tools. This is available as part
+# of the base system, and is on the live installation media (CD/USB) under
+# base-devel.
+
+# To see if firmware is needed for rtl8192s
+ls /lib/firmware/RTL*
+# If rtl8192sfw.bin is not in the folder, then download and install with
+wget http://launchpadlibrarian.net/33927923/rtl8192se_linux_2.6.0010.1012.2009.tar.gz
+sudo mkdir /lib/firmware/RTL8192SU
+sudo tar -xzOf rtl8192se_linux* rtl8192se_linux*/firmware/RTL8192SE/rtl8192sfw.bin > \
+/lib/firmware/RTL8192SU/rtl8192sfw.bin
+# wicd has problems with this driver but NetworkManager is more effective.
+
+# To ensure a wireless interface has been created use (prints out wireless cards)
+ip link
+# Bring interface up and then use with
+sudo iwconfig <interface> txpower auto
+sudo ip link set <interface> up
+sudo iwlist <interface> scan | less
+# For no encryption use
+sudo iwconfig <interface> essid "MyEssid"
+# For WEP
+sudo iwconfig <interface> essid "MyEssid" key s:asciikey
+# For WPA use wpa_supplicant, first editing
+sudo mv /etc/wpa_supplicant.conf /etc/wpa_supplicant.conf.original
+sudo touch /etc/wpa_supplicant.conf
+sudo 'echo "ctrl_interface=DIR=/var/run/wpa_supplicant Group=network update_config=1" \
+> /etc/wpa_supplicant.conf'
+# Possible problem is this should be /var/wpa_supplicant
+
+# Classic method
+sudo wpa_passphrase mywireless_ssid "secretpassphrase" >> /etc/wpa_supplicant.conf
+sudo ip link set <interface> up
+sudo wpa_supplicant -Dwext -i <interface> -c/etc/wpa_supplicant.conf -B
+sleep 10s
+sudo dhcpcd <interface>
+sudo ip addr show <interface>

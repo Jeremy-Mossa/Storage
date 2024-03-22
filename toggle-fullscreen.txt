@@ -1,0 +1,5 @@
+sudo install wmctrl
+wmctrl -r :ACTIVE: -b toggle,fullscreen
+
+place this in a script and use the name of this script
+in a keybinding in openbox rc.xml to toggle fullscreen
