@@ -1,0 +1,3 @@
+# Trim the fist X (in this case 8) seconds from audio file
+
+ffmpeg -ss 8 -i in_file.m4a -c copy out_file.m4a
