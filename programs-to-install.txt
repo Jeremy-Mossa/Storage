@@ -20,4 +20,5 @@ okular
 luajit
 vim-syntastic
 ghc
-
+xsecurelock
+xss-lock
