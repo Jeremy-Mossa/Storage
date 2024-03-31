@@ -1,0 +1,8 @@
+# Unmount the usb drive
+sudo umount /dev/sdX
+
+# Format usb drive with FAT32 file system
+sudo mkfs.vfat /dev/sdX
+
+# Confirm formatting process completed successfully
+sudo fsck /dev/sdX
