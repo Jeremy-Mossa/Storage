@@ -1,0 +1,34 @@
+# some more ls aliases
+alias ll='ls -l'
+alias la='ls -A'
+alias l='ls -CF'
+# user aliases
+alias vi=vim
+alias brc="vi /home/jbm/.bashrc"
+alias src="source /home/jbm/.bashrc"
+alias install="yes | sudo apt-get install"
+alias upgrade="yes | sudo apt-get upgrade"
+alias openrc="vi ~/.config/openbox/rc.xml"
+alias relogin="sudo pkill -SIGTERM Xorg"
+alias batt="acpi -V | head -n2"
+alias poweroff="sudo shutdown -h now"
+alias ff="firefox & 2>/dev/null"
+alias flk="falkon & 2>/dev/null"
+alias search="apt-cache search"
+alias pingdeb='ping debian.org -c3'
+alias pingmul='ping mullvad.net -c3'
+alias wificon='nmcli dev wifi connect'
+alias wlanup='sudo ip link set wlan0 up'
+alias wlandown='sudo ip link set wlan0 down'
+alias sandisk='sudo mount /dev/sda1 /media/'
+alias c='clear'
+alias cl='clear'
+alias ipaddr='bash ~/scripts/ipaddr.sh'
+alias oracle='bash ~/scripts/oracle.sh'
+alias mulcon='mullvad connect; sleep 2; ipaddr'
+alias grep='grep -i'
+alias terminator='terminator -b --geometry 785x768+0+0'
+alias berkeleywifi="falkon welcome.wifi.berkeley.edu 2>/dev/null 1>/dev/null 0>/dev/null &"
+alias df='df -h'
+alias du='du -h'
+alias ytmp3='yt-dlp -x --audio-format mp3'
