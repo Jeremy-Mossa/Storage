@@ -4,4 +4,4 @@ egrep
 conventions and meetups
 user groups in the bay area
 old linux magazines
-
+bluetooth on laptop
