@@ -1,10 +1,10 @@
 # This file assumes `$ cat some_file | grep ` used as the general one-liner
 
-# Search for a string
-grep <some_string>
+# Print lines containing <some_string> in <filename>
+grep some_string filename
 
 # Case insensitive search
-grep -i <some_string>
+grep -i <some_string> filename
 
 # Count the number of empty lines
 # ^ character matches the beginning of line and
@@ -41,4 +41,6 @@ grep '\bfoo\b'
 # -B 2 for 2 lines before a match
 grep -wA 3 foo
 
-
+# Exclude lines based on character or pattern
+# Exlude lines containing foo
+grep -v foo
