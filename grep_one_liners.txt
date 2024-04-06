@@ -12,4 +12,13 @@ grep -i <some_string>
 grep -c ^$
 
 # Return only integers
+# -o option to only print matched parts of 
+# lines, rather than the full line of text
+# [0-9]* zero or more occurences of digits 0-9
+# '\d*' is the perl compatible regex of above (\d for digits)
 grep -o [0-9]*
+grep -oP '\d*'
+
+# According to number of digits greater 
+# than or equal to the number in curly braces
+grep '[0-9]\{3\}'
