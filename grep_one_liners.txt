@@ -1,0 +1,15 @@
+# This file assumes `$ cat some_file | grep ` used as the general one-liner
+
+# Search for a string
+grep <some_string>
+
+# Case insensitive search
+grep -i <some_string>
+
+# Count the number of empty lines
+# ^ character matches the beginning of line and
+# $ character matches the end of line
+grep -c ^$
+
+# Return only integers
+grep -o [0-9]*
