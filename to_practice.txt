@@ -1,7 +1,8 @@
 grep one-liners
 xargs 
-egrep
+find
 conventions and meetups
 user groups in the bay area
 old linux magazines
 bluetooth on laptop
+Go lang download, directory and practice
