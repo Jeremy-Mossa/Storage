@@ -29,4 +29,16 @@ grep -P '\d{3}'
 grep -Eo '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}'
 grep -Po '\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}'
 
+# Only lines with whole word 'foo' not
+# including a word such as 'footer'
+# regex uses '\bfoo\b'
+grep -w foo
+grep '\bfoo\b'
+
+# <n> lines before and after a match
+# Print the match, and
+# -A 3 for 3 lines after a match
+# -B 2 for 2 lines before a match
+grep -wA 3 foo
+
 
