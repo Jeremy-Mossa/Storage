@@ -20,6 +20,10 @@ grep -R some_string dir/
 # $ character matches the end of line
 grep -c ^$
 
+# Grep for string_one OR string_two
+grep -E 'string_one|string_two'
+grep 'string_one\|string_two'
+
 # Return only integers
 # -o option to only print matched parts of 
 # lines, rather than the full line of text
