@@ -1,5 +1,6 @@
 grep one-liners
 xargs 
+exec
 find
 conventions and meetups
 user groups in the bay area
