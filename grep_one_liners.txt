@@ -4,7 +4,16 @@
 grep some_string filename
 
 # Case insensitive search
-grep -i <some_string> filename
+grep -i some_string filename
+
+# Matches for strings at the beginning of a line 
+grep ^some_string filename
+
+# Matches for strings at the end of a line 
+grep some_string$ filename
+
+# Matches for strings recursively in dir
+grep -R some_string dir/
 
 # Count the number of empty lines
 # ^ character matches the beginning of line and
@@ -39,8 +48,14 @@ grep '\bfoo\b'
 # Print the match, and
 # -A 3 for 3 lines after a match
 # -B 2 for 2 lines before a match
+# -C 4 for 4 lines both before and
+# after a match
 grep -wA 3 foo
+grep -wB 2 foo
+grep -wC 4 foo
 
 # Exclude lines based on character or pattern
 # Exlude lines containing foo
 grep -v foo
+
+
