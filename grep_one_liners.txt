@@ -62,4 +62,5 @@ grep -wC 4 foo
 # Exlude lines containing foo
 grep -v foo
 
-
+# Disk devices in /dev dir
+ls /dev | grep -E '(s|h)d[a-z]'
