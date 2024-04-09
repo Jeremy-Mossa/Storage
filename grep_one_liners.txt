@@ -1,19 +1,22 @@
 # This file assumes `$ cat some_file | grep ` used as the general one-liner
 
-# Print lines containing <some_string> in <filename>
-grep some_string filename
+# Print lines containing <pattern> in <filename>
+grep pattern filename
+
+# Print lines containing <pattern> in multiple filenames
+grep pattern filename1 filename2 filename3
 
 # Case insensitive search
-grep -i some_string filename
+grep -i pattern filename
 
 # Matches for strings at the beginning of a line 
-grep ^some_string filename
+grep ^pattern filename
 
 # Matches for strings at the end of a line 
-grep some_string$ filename
+grep pattern$ filename
 
 # Matches for strings recursively in dir
-grep -R some_string dir/
+grep -R pattern dir/
 
 # Count the number of empty lines
 # ^ character matches the beginning of line and
@@ -64,3 +67,10 @@ grep -v foo
 
 # Disk devices in /dev dir
 ls /dev | grep -E '(s|h)d[a-z]'
+
+# Show string in color
+grep --color 'user' /etc/passwd
+
+# Suppress error messages
+grep -s pattern filename
+
