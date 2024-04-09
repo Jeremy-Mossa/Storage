@@ -12,6 +12,9 @@ grep -i pattern filename
 # Matches for strings at the beginning of a line 
 grep ^pattern filename
 
+# Prints the line number of pattern
+grep -n pattern filename
+
 # Matches for strings at the end of a line 
 grep pattern$ filename
 
