@@ -2,6 +2,7 @@ grep one-liners
 xargs 
 exec
 find
+backticks - when and how to use
 conventions and meetups
 user groups in the bay area
 old linux magazines
