@@ -2,9 +2,10 @@ grep one-liners
 xargs 
 exec
 find
+gnu parallel
+tr
 backticks - when and how to use
 conventions and meetups
 user groups in the bay area
 old linux magazines
 bluetooth on laptop
-Go lang download, directory and practice
