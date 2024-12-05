@@ -1,0 +1,38 @@
+# Install git, then navigate to the development directory. Initialize git:
+# This will create a hidden .git directory in that dev directory
+
+git init
+
+# Add a remote, which is like a remote control from local machine to github
+# And make it for ssh, after setting up ssh and copying rsa.pub key to github
+# The name of the remote in this case is ssh
+
+git add ssh ssh://git@github.com/<username>/<repository_name> 
+
+# To update github repository (master branch) to match local machine:
+
+git push ssh master
+
+
+# Add a remote for a folder
+git remote add ssh ssh://git@github.com/Jeremy-Mossa/Storage
+
+# Test the remote
+git remote -v
+ssh	ssh://git@github.com/Jeremy-Mossa/Storage (fetch)
+ssh	ssh://git@github.com/Jeremy-Mossa/Storage (push)
+
+# Configure a user email
+# git config --global user.email "Jeremy-Mossa@github.com"
+
+# A simple commit
+# git commit -m "ssh-rsa-github-howto.txt"
+
+# Example of cloning a repository
+
+# ~/Linux-texts --> git clone git@github.com:Jeremy-Mossa/Storage.git
+# Cloning into 'Storage'...
+# remote: Enumerating objects: 131, done
+# remote: Counting objects: 100% (131/131), done.
+# remote: Compressing objects: 100% (104/104), done.
+# remote: Total 131 (delta 42), reused 109 (delta 21), pack-re
