@@ -1,0 +1,48 @@
+alias brc="vi /home/jbm/.bash_aliases"
+alias src="source /home/jbm/.bash_aliases"
+alias c='clear'
+alias reboot="sudo reboot"
+alias poweroff="sudo poweroff"
+alias off='sudo shutdown -h now'
+alias newscript="/home/jbm/scripts/newscript.sh"
+alias pingdeb="ping -c 3 debian.org"
+alias install=" yes | sudo apt-get install"
+alias search="apt-cache search"
+alias df='df -h'
+alias du='du -h'
+alias m=mplayer
+alias menu='sudo vi /boot/grub/grub.cfg'
+alias lo=libreoffice 
+alias l=ls
+alias sl=ls
+alias la='ls -a'
+alias umount='sudo umount'
+alias b=acpi
+alias batt=acpi
+alias ldev='ls /dev/ | grep sd'
+alias lynx='lynx -vikeys'
+alias xinit='su -c "vi /etc/X11/xinit/xinitrc"'
+alias x0='xbacklight -dec 100'
+alias am=alsamixer
+alias fastboot='sudo fastboot'
+alias adb='sudo adb'
+alias firefox=firefox-esr
+alias ff=firefox-esr
+
+
+# Wifi Aliases
+alias wifiup="sudo ip link set wifi3 up"
+alias wifidown="sudo ip link set wifi3 down"
+alias grandhotelwifi='nmcli device wifi connect "The Grand Hotel Guest" ifname wifi3'
+alias genentech='nmcli device wifi connect "guests" ifname wifi3 && ff roche.com'
+alias tether='nmcli device wifi connect "Xperia5iii" password "UcbUcb30#"'
+
+# Functions
+usb() {
+	sudo mount /media/usb
+	cd /media/usb
+	ls
+}
+media() {
+        cd /media/
+}
