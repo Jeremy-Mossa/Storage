@@ -7,7 +7,7 @@ git init
 # And make it for ssh, after setting up ssh and copying rsa.pub key to github
 # The name of the remote in this case is ssh
 
-git add ssh ssh://git@github.com/<username>/<repository_name> 
+git remote add ssh ssh://git@github.com/<username>/<repository_name> 
 
 # To update github repository (master branch) to match local machine:
 
