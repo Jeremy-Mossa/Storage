@@ -1,0 +1,8 @@
+# View the current time\date info using systemd
+timedatectl
+
+# Search for a timezone
+timedatectl list-timezones | grep 'America'
+
+# Set ntp sync
+timedatectl set-ntp yes
