@@ -1,5 +1,8 @@
 # This file assumes `$ cat some_file | grep ` used as the general one-liner
 
+# Print the name of a file containing string "foo" in any file ending in .c
+grep -l "foo" *.c
+
 # Print lines containing <pattern> in <filename>
 grep pattern filename
 
