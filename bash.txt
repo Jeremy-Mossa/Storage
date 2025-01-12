@@ -1,47 +1,149 @@
-###########################################
-# Typed Variables
-# How to declare and use variables
+###################################################################
+# typed Variables
 
-var -a # Treated as array
-var -f # Use function names only
-var -F # Display function names without
-  definitions
-var -i # Treated as integer
-var -r # Read-only
-var -x # Marked for export via environment
+| Variable Type | Description                                 |
+|---------------|---------------------------------------------|
+| declare -i    | Integer. Variables are treated as integers. |
+| declare -r    | Read-only. Variable value cannot be changed |
+|               | after setting.                              |
+| declare -a    | Array. Creates an indexed array.            |
+| declare -A    | Associative array. Creates a hash map.      |
+| declare -x    | Export. Makes the variable available to     |
+|               | sub-processes.                              |
+| declare -l    | Converts to lowercase upon assignment.      |
+| declare -u    | Converts to uppercase upon assignment.      |
+| declare -n    | Name reference to another variable.         |
+| declare -p    | Print attributes and value of the variable. |
+| declare -f    | Function. Displays  function's definition.  |
+| declare -F    | Displays the function's name and attributes.|
 
-###########################################
+###################################################################
 
 
 
-###########################################
+###################################################################
 # arithmetic operators
-++   # increment by one pre and postfix
---   # as above but decrement
-+-*/ # plus ... Divide by truncate
-%    # modulo remainder
-**   # exponentiation
-<<   # bit-shift left
->>   # bit-shift right
-&    # bitwise and
-|    # bitwise or
-~    # bitwise not
-!    # logical not
-^    # bitwise exlusive or, xor
-,    # sequential evaluation
+
+| Op      | Description                     |
+--------------------------------------------|
+| ++      | increment by one pre and postfix|
+| --      | as above but decrement          |
+| +-*/    | plus ... Divide by truncate     |
+| %       | modulo remainder                |
+| **      | exponentiation                  |
+| <<      | bit-shift left                  |
+| >>      | bit-shift right                 |
+| &       | bitwise and                     |
+| |       | bitwise or                      |
+| ~       | bitwise not                     |
+| !       | logical not                     |
+| ^       | bitwise exlusive or, xor        |
+| ((...)) | evaluation                      |
+| ,       | sequential evaluation           |
  
-###########################################
-###########################################
-###########################################
-###########################################
-###########################################
-###########################################
-###########################################
-###########################################
-###########################################
-###########################################
-###########################################
-###########################################
+###################################################################
+
+
+
+###################################################################
+# Parameter expansion and string manipulations
+
+| Parameter Expansion   | Description                            | 
+|-----------------------|-----------------------------------------
+| ${parameter}          | Expands to `parameter`.                |
+| ${param:-word}        | `word` if `parameter` is unset or null,| 
+|                       | else `parameter`.                      |
+| ${param:=word}        | `word` if `parameter` is unset or null;|
+|                       | assigns `word` to                      |
+|                       | `parameter`.                           |
+| ${param:?word}        | Prints `word` and exits if `param` is  |
+|                       | unset or null,                         |
+|                       | else `param`.                          |
+| ${param:+word}        | `word` if `param` is set and not null, |
+|                       | else nothing.                          |
+| ${#param}             | Length of `param`.                     |
+| ${param:offset}       | Substr of `param` starting at `offset`.|
+| ${param:offset:length}| Substr of `param` starting at `offset` |
+|                       | with `length`.                         |
+| ${param#pattern}      | Removes shortest match of `pattern`    |
+|                       | from start of `param`.                 |                               |
+| ${param##pattern}     | Removes longest match of `pattern`     |
+|                       | from start of `param`.                 |                               |
+| ${param%pattern}      | Removes shortest match of `pattern`    |
+|                       | from end of `param`.                   |                             |
+| ${param%%pattern}     | Removes longest match of `pattern`     |
+|                       | from end of `param`.                   |                             |
+| ${param/pattern/str}  | Replaces first match of `pattern` with | 
+|                       | `str` in `param`.                      |                            |
+| ${param//pattern/str} | Replace every `pattern` with `str`.    |
+
+###################################################################
+
+
+
+###################################################################
+# file test operators
+
+| Operator        | Description                                                  |
+|-----------------|----------------------------------------------|
+| -e file         | True if `file` exists.                       |
+| -f file         | True if `file` is a regular file.            |
+| -d file         | True if `file` is a directory.               |
+| -h file         | True if `file` is a symbolic link.           |
+| -r file         | True if `file` is readable.                  |
+| -w file         | True if `file` is writable.                  |
+| -x file         | True if `file` is executable.                |
+| -s file         | True if `file` has a size greater than zero. |
+| -nt file1 file2 | True if `file1` is newer than `file2`.       |
+| -ot file1 file2 | True if `file1` is older than `file2`.       |
+
+###################################################################
+
+
+
+###################################################################
+# special variables for scripts
+
+| Variable       | Description                                   |
+|----------------|-----------------------------------------------|
+| $0             | name of the script being executed.            |
+| $1, $2, ... $N | positional parameters, passed to the script.  |
+| $#             | number of positional parameters.              |
+| $*             | All positional parameters (as a single word). |
+| $@             | All  positional parameters as separate words  |
+| $?             | exit status of the last command executed.     |
+| $$             | process ID of the current shell.              |
+| $!             | process ID of the last background command.    |
+| $-             | current options set for the shell.            |
+| $_             | last argument of the previous command.        |
+
+###################################################################
+
+
+
+###################################################################
+# conditional expressions
+
+| Expression| Description               |
+|-----------|---------------------------|
+| -eq       | Equal to                  |
+| -ne       | Not equal to              |
+| -lt       | Less than                 |
+| -le       | Less than or equal to     |
+| -gt       | Greater than              |
+| -ge       | Greater than or equal to  |
+| &&        | Logical AND               |
+| ||        | Logical OR                |
+| !         | Logical NOT               |
+
+###################################################################
+
+
+
+###################################################################
+
+###################################################################
+###################################################################
 # How to use for loop
 # Flow control for loop
 
@@ -64,11 +166,11 @@ for ((;;)); do
   sleep 0.5
 done
 
-###########################################
+###################################################################
 
 
 
-###########################################
+###################################################################
 # How to use select
 # Flow Control select
 
@@ -93,11 +195,11 @@ done
 # But it starts a new shell
 # $SHELL
 #
-###########################################
+###################################################################
 
 
 
-###########################################
+####################################################################
 
 # How to while loop
 # Flow control while loop
@@ -116,4 +218,4 @@ while [ $i -gt 0 ]; do
 done
 
 echo $product
-###########################################
+###################################################################
