@@ -22,6 +22,27 @@
 
 
 ###################################################################
+# array operations
+
+| Operation             | Description                          |
+|-----------------------|--------------------------------------|
+| array=(val1 val2 ...) | Define an indexed array              |
+| array+=(v3 v4 ...)    | Append values to end of array        |
+| array[index]=value    | Assign a value to an array element   |
+| ${array[index]}       | Retrieve an array element            |
+| ${array[@]}           | Retrieve all elements                |
+| ${#array[@]}          | Retrieve the length of the array     |
+| ${!array[@]}          | Retrieve the indices of the array    |
+| unset array[index]    | Remove an element from the array     |
+| declare -A a_array    | Declare an associative array         |
+| a_array[key]=value    | Assign value to assoc. array element |
+| array=()              | Empty an array                       |
+
+###################################################################
+
+
+
+###################################################################
 # arithmetic operators
 
 | Op      | Description                     |
@@ -141,8 +162,40 @@
 
 
 ###################################################################
+# exit status codes
+
+| Exit Code | Description                       |
+|-----------|-----------------------------------|
+| 0         | Success                           |
+| 1         | General error                     |
+| 2         | Misuse of shell builtins          |
+| 126       | Command invoked cannot execute    |
+| 127       | Command not found                 |
+| 128       | Invalid exit argument             |
+| 130       | Script terminated by Control-C    |
+| 255*      | Exit status out of range          |
 
 ###################################################################
+
+
+
+###################################################################
+# signal names and numbers
+
+| Signal   | Number | Description                      |
+|----------|--------|----------------------------------|
+| SIGHUP   | 1      | Hangup                           |
+| SIGINT   | 2      | Interrupt from keyboard (Ctrl-C) |
+| SIGQUIT  | 3      | Quit from keyboard               |
+| SIGKILL  | 9      | Kill signal                      |
+| SIGTERM  | 15     | Termination signal               |
+| SIGSTOP  | 19     | Stop process                     |
+| SIGCONT  | 18     | Continue if stopped              |
+
+###################################################################
+
+
+
 ###################################################################
 # How to use for loop
 # Flow control for loop
@@ -218,4 +271,198 @@ while [ $i -gt 0 ]; do
 done
 
 echo $product
+###################################################################
+
+
+
+###################################################################
+# printf how to
+
+| Format Specifier | Description                              |
+|------------------|------------------------------------------|
+| %b               | Print the argument with backslash escapes|
+| Example          | printf "%b" "Hello\nWorld"               |
+| Output           | Hello                                    |
+|                  | World                                    |
+|                  |                                          |
+| %c               | Print the first character of the argument|
+| Example          | printf "%c" "Hello"                      |
+| Output           | H                                        |
+|                  |                                          |
+| %d, %i           | Print the argument as a signed number    |
+| Example          | printf "%d" 42                           |
+| Output           | 42                                       |
+|                  |                                          |
+| %e, %E           | Print the argument in scientific notation|
+| Example          | printf "%e" 1234.5678                    |
+| Output           | 1.234568e+03                             |
+|                  |                                          |
+| %f               | Print the argument as a floating-point   |
+| Example          | printf "%f" 1234.5678                    |
+| Output           | 1234.567800                              |
+|                  |                                          |
+| %g, %G           | Shortest representation of %e or %f      |
+| Example          | printf "%g" 1234.5678                    |
+| Output           | 1234.57                                  |
+|                  |                                          |
+| %o               | Print the argument as an octal number    |
+| Example          | printf "%o" 42                           |
+| Output           | 52                                       |
+|                  |                                          |
+| %s               | Print the argument as a string           |
+| Example          | printf "%s" "Hello"                      |
+| Output           | Hello                                    |
+|                  |                                          |
+| %u               | Print the argument as an unsigned number |
+| Example          | printf "%u" 42                           |
+| Output           | 42                                       |
+|                  |                                          |
+| %x, %X           | Print the argument as a hexadecimal      |
+| Example          | printf "%x" 42                           |
+| Output           | 2a                                       |
+|                  |                                          |
+| %%               | Print a literal % character              |
+| Example          | printf "%%"                              |
+| Output           | %                                        |
+|                  |                                          |
+--------------------------------------------------------------|
+| Escape Sequence  | Description                              |
+|------------------|------------------------------------------|
+| \\               | Print a backslash                        |
+| Example          | printf "\\"                              |
+| Output           | \                                        |
+|                  |                                          |
+| \a               | Print an alert (bell)                    |
+| Example          | printf "\a"                              |
+| Output           | (bell sound)                             |
+|                  |                                          |
+| \b               | Print a backspace                        |
+| Example          | printf "A\bB"                            |
+| Output           | B                                        |
+|                  |                                          |
+| \c               | Suppress further output                  |
+| Example          | printf "Hello\cWorld"                    |
+| Output           | Hello                                    |
+|                  |                                          |
+| \f               | Print a form feed                        |
+| Example          | printf "\f"                              |
+| Output           | (form feed)                              |
+|                  |                                          |
+| \n               | Print a newline                          |
+| Example          | printf "\n"                              |
+| Output           | (newline)                                |
+|                  |                                          |
+| \r               | Print a carriage return                  |
+| Example          | printf "Hello\rWorld"                    |
+| Output           | World                                    |
+|                  |                                          |
+| \t               | Print a horizontal tab                   |
+| Example          | printf "Hello\tWorld"                    |
+| Output           | Hello    World                           |
+|                  |                                          |
+| \v               | Print a vertical tab                     |
+| Example          | printf "Hello\vWorld"                    |
+| Output           | Hello                                    |
+|                  | World                                    |
+|                  |                                          |
+--------------------------------------------------------------|
+| Flags            | Description                              |
+|------------------|------------------------------------------|
+| -                | Left-justify the output                  |
+| Example          | printf "%-10s" "Hello"                   |
+| Output           | Hello     (with 5 trailing spaces)       |
+|                  |                                          |
+| +                | Always print a sign (+ or -)             |
+| Example          | printf "%+d" 42                          |
+| Output           | +42                                      |
+|                  |                                          |
+| (space)          | Print a space before positive numbers    |
+| Example          | printf "% d" 42                          |
+| Output           |  42                                      |
+|                  |                                          |
+| 0                | Pad numbers with leading zeros           |
+| Example          | printf "%010d" 42                        |
+| Output           | 0000000042                               |
+|                  |                                          |
+| #                | Alternate form (e.g., 0x for hex,        |
+                   | 0 for octal)                             |
+| Example          | printf "%#x" 42                          |
+| Output           | 0x2a                                     |
+|                  |                                          |
+--------------------------------------------------------------|
+| Width and Precision | Description                           |
+|---------------------|---------------------------------------|
+| width               | Minimum number of characters          |
+| Example             | printf "%10s" "Hello"                 |
+| Output              |      Hello (with 5 leading spaces)    |
+|                     |                                       |
+| .precision          | Max characters for strings or digits  |
+|                     | after decimal for numbers             |
+| Example             | printf "%.3f" 1234.5678               |
+| Output              | 1234.568                              |
+|                     |                                       |
+| Example             | printf "%10.3f" 1234.5678             |
+| Output              |   1234.568 (with 3 leading spaces)    |
+|                     |                                       |
+
+###################################################################
+
+
+
+###################################################################
+# common bash builtins
+
+| Command  | Description                                          |
+|----------|------------------------------------------------------|
+| bg       | Resume a suspended job in the background.            |
+| bind     | Display or modify readline key and function bindings |
+| break    | Exit from a loop.                                    |
+| builtin  | Execute a shell built-in, bypassing funcs +aliases.  |
+| command  | Run a command, ignoring shell functions.             |
+| compgen  | Generate possible completion matches for a word.     |
+| complete | Specify how arguments are to be completed.           |
+| compopt  | Modify or display completion options.                |
+| continue | Resume the next iteration of a loop.                 |
+| declare  | Declare variables and give them attributes.          |
+| dirs     | Display the list of currently remembered directories |
+| disown   | Remove jobs from the current shell w\o terminating   |
+| echo     | Display a line of text or variable value.            |
+| enable   | Enable or disable shell built-ins.                   |
+| eval     | Evaluate several commands/arguments.                 |
+| exec     | Replace the shell with the specified command.        |
+| exit     | Exit the shell with a status.                        |
+| export   | Set an environment variable.                         |
+| fc       | Fix command: edit the command history.               |
+| fg       | Bring a background job to the foreground.            |
+| getopts  | Parse positional parameters.                         |
+| hash     | Remember or display program locations.               |
+| help     | Display help for built-in commands.                  |
+| history  | Show the command history.                            |
+| jobs     | List active jobs.                                    |
+| kill     | Send a signal to a process.                          |
+| let      | Perform arithmetic on shell variables.               |
+| local    | Declare a local variable in a function.              |
+| logout   | Exit a login shell.                                  |
+| popd     | Remove the top directory from the stack.             |
+| printf   | Format and print data.                               |
+| pushd    | Save and change the current directory.               |
+| read     | Read a line of input.                                |
+| readonly | Mark variables/functions as readonly.                |
+| return   | Exit a function with a return status.                |
+| set      | Set or unset shell options and positional parameters |
+| shift    | Shift positional parameters.                         |
+| shopt    | Set or unset shell options.                          |
+| source   | Read + execute commands from a file in current shell |
+| suspend  | Suspend the current shell.                           |
+| test     | Evaluate a conditional expression.                   |
+| times    | Display shell process times.                         |
+| trap     | Run a command when signal is received by the script  |
+| type     | Describe a command.                                  |
+| ulimit   | Control resource limits for the shell.               |
+| umask    | Set file creation mask.                              |
+| unalias  | Remove an alias.                                     |
+| unset    | Unset a shell variable or function.                  |
+| wait     | Wait for a process to change state.                  |
+| which    | Locate a command.                                    |
+
 ###################################################################
