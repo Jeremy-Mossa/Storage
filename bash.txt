@@ -684,7 +684,7 @@ done
 | Variable     | Description                                     |
 |--------------|-------------------------------------------------|
 | PATH         | List of directories to search for executable    |
-               |  commands                                       |
+|              |   commands                                      |
 | HOME         | Path to the home directory of the current user  |
 | USER         | Current logged-in user's username               |
 | SHELL        | Path to the current user's shell                |
