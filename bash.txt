@@ -28,7 +28,7 @@
 --------------------------------------------|
 | ++      | increment by one pre and postfix|
 | --      | as above but decrement          |
-| +-*/    | plus ... Divide by truncate     |
+| +-*/    | add ... divide by and truncate  |
 | %       | modulo remainder                |
 | **      | exponentiation                  |
 | <<      | bit-shift left                  |
@@ -66,15 +66,15 @@
 | ${param:offset:length}| Substr of `param` starting at `offset` |
 |                       | with `length`.                         |
 | ${param#pattern}      | Removes shortest match of `pattern`    |
-|                       | from start of `param`.                 |                               |
+|                       | from start of `param`.                 |
 | ${param##pattern}     | Removes longest match of `pattern`     |
-|                       | from start of `param`.                 |                               |
+|                       | from start of `param`.                 |
 | ${param%pattern}      | Removes shortest match of `pattern`    |
-|                       | from end of `param`.                   |                             |
+|                       | from end of `param`.                   |
 | ${param%%pattern}     | Removes longest match of `pattern`     |
-|                       | from end of `param`.                   |                             |
-| ${param/pattern/str}  | Replaces first match of `pattern` with | 
-|                       | `str` in `param`.                      |                            |
+|                       | from end of `param`.                   |
+| ${param/pattern/str}  | Replaces first match of `pattern` with |
+|                       | `str` in `param`.                      |
 | ${param//pattern/str} | Replace every `pattern` with `str`.    |
 
 ###################################################################
@@ -84,7 +84,7 @@
 ###################################################################
 # file test operators
 
-| Operator        | Description                                                  |
+| Operator        | Description                                  |
 |-----------------|----------------------------------------------|
 | -e file         | True if `file` exists.                       |
 | -f file         | True if `file` is a regular file.            |
