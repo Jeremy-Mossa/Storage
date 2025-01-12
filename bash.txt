@@ -248,6 +248,28 @@ done
 # But it starts a new shell
 # $SHELL
 #
+
+PS3="Select an option: "
+select option in "Option 1" "Option 2" "Option 3"; do
+    case $option in
+        "Option 1")
+            echo "You selected Option 1"
+            break
+            ;;
+        "Option 2")
+            echo "You selected Option 2"
+            break
+            ;;
+        "Option 3")
+            echo "You selected Option 3"
+            break
+            ;;
+        *)
+            echo "Invalid option"
+            ;;
+    esac
+done
+
 ###################################################################
 
 
@@ -275,7 +297,68 @@ echo $product
 
 
 
-###################################################################
+####################################################################
+# how to use case
+# flow control case
+
+case "$1" in
+    start)
+        echo "Starting service..."
+        ;;
+    stop)
+        echo "Stopping service..."
+        ;;
+    restart)
+        echo "Restarting service..."
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|restart}"
+        ;;
+esac
+
+####################################################################
+
+
+
+####################################################################
+# here document
+
+cat << EOF
+This is a multi-line
+string that will be
+used as input to the
+`cat` command.
+EOF
+
+####################################################################
+
+
+
+####################################################################
+# getopts for argument parsing
+
+while getopts ":a:b:" opt; do
+    case $opt in
+        a)
+            echo "Option -a with argument: $OPTARG"
+            ;;
+        b)
+            echo "Option -b with argument: $OPTARG"
+            ;;
+        \?)
+            echo "Invalid option: -$OPTARG" >&2
+            ;;
+        :)
+            echo "Option -$OPTARG requires an argument" >&2
+            ;;
+    esac
+done
+
+####################################################################
+
+
+
+####################################################################
 # printf how to
 
 | Format Specifier | Description                              |
@@ -466,3 +549,38 @@ echo $product
 | which    | Locate a command.                                    |
 
 ###################################################################
+
+
+
+###################################################################
+# environment variables
+
+| Variable     | Description                                     |
+|--------------|-------------------------------------------------|
+| PATH         | List of directories to search for executable    |
+               |  commands                                       |
+| HOME         | Path to the home directory of the current user  |
+| USER         | Current logged-in user's username               |
+| SHELL        | Path to the current user's shell                |
+| PWD          | Current working directory                       |
+| OLDPWD       | Previous working directory                      |
+| LOGNAME      | Current user's login name                       |
+| HOSTNAME     | Hostname of the system                          |
+| MAIL         | Path to the current user's mail file            |
+| PS1          | Primary command prompt string                   |
+| PS2          | Secondary command prompt string                 |
+| IFS          | Internal field separator                        |
+| LANG         | Current language setting                        |
+| LC_ALL       | Override all locale settings                    |
+| HISTFILE     | Path to the history file                        |
+| HISTSIZE     | Number of commands to remember in the command   |
+|              |   history                                       |
+| HISTFILESIZE | Number of lines the history file can contain    |
+| TERM         | Terminal type                                   |
+| EDITOR       | Default text editor                             |
+| VISUAL       | Default visual editor                           |
+| TMOUT        | Timeout value for the shell                     |
+| UID          | User ID of the current user                     |
+| GID          | Group ID of the current user                    |
+
+#################################################################
