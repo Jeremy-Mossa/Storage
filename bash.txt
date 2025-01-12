@@ -1,0 +1,119 @@
+###########################################
+# Typed Variables
+# How to declare and use variables
+
+var -a # Treated as array
+var -f # Use function names only
+var -F # Display function names without
+  definitions
+var -i # Treated as integer
+var -r # Read-only
+var -x # Marked for export via environment
+
+###########################################
+
+
+
+###########################################
+# arithmetic operators
+++   # increment by one pre and postfix
+--   # as above but decrement
++-*/ # plus ... Divide by truncate
+%    # modulo remainder
+**   # exponentiation
+<<   # bit-shift left
+>>   # bit-shift right
+&    # bitwise and
+|    # bitwise or
+~    # bitwise not
+!    # logical not
+^    # bitwise exlusive or, xor
+,    # sequential evaluation
+ 
+###########################################
+###########################################
+###########################################
+###########################################
+###########################################
+###########################################
+###########################################
+###########################################
+###########################################
+###########################################
+###########################################
+###########################################
+# How to use for loop
+# Flow control for loop
+
+#Print mulitples of 12 up to 144
+for i in {1..144..12}; do
+  echo $i
+done
+
+# One-liner to print alphabet
+for char in {a..z}; do echo $char; done
+
+# C-style print of integers 1-10
+for ((i=1; i<=10; i++))
+  do printf $i'\n'
+done
+
+# Infinite loop
+for ((;;)); do
+  echo "Press Ctrl-C to stop..."
+  sleep 0.5
+done
+
+###########################################
+
+
+
+###########################################
+# How to use select
+# Flow Control select
+
+# Each ":" is replaced with a newline
+dirs=${PATH//:/'\n'}
+
+select path in $(echo -e $dirs); do
+  #Checks if path is null
+  if [ $path ]; then
+    echo $path
+    cd $path
+    break
+  else
+    echo 'invalid selection'
+  fi
+done
+
+# $SHELL at the end of the script
+# allows the use of cd without
+# the need to do 'source menu.sh'
+# Just ./menu.sh
+# But it starts a new shell
+# $SHELL
+#
+###########################################
+
+
+
+###########################################
+
+# How to while loop
+# Flow control while loop
+# This scriptlet has no error handling
+# And is only for showing while loops
+
+declare -i product=1
+declare -i i
+
+read -p "Enter and integer greater than \
+  zero: " i
+
+while [ $i -gt 0 ]; do
+  product=product*=i
+  i=i-=1
+done
+
+echo $product
+###########################################
