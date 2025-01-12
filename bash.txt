@@ -22,6 +22,132 @@
 
 
 ###################################################################
+# how to use let
+
+| Operation              | Description                           |
+|------------------------|---------------------------------------|
+| let var=expression     | Evaluate expression, assign it to var |
+| Example                | let result=5+3                        |
+| Output                 | result is 8                           |
+|                        |                                       |
+|------------------------|---------------------------------------|
+| let "var=expression"   | Expression can be a string in quotes  |
+| Example                | let "result=5+3"                      |
+| Output                 | result is 8                           |
+|                        |                                       |
+|------------------------|---------------------------------------|
+| let "var = expression" | Spaces around = are allowed in quotes |
+| Example                | let "result = 5 + 3"                  |
+| Output                 | result is 8                           |
+|                        |                                       |
+|------------------------|---------------------------------------|
+| let var++              | Increment var by 1                    |
+| Example                | let count++                           |
+| Output                 | count incremented by 1                |
+|                        |                                       |
+|------------------------|---------------------------------------|
+| let var--              | Decrement var by 1                    |
+| Example                | let count--                           |
+| Output                 | count decremented by 1                |
+|                        |                                       |
+|------------------------|---------------------------------------|
+| let var+=value         | Add value to var                      |
+| Example                | let result+=5                         |
+| Output                 | result increased by 5                 |
+|                        |                                       |
+|------------------------|---------------------------------------|
+| let var-=value         | Subtract value from var               |
+| Example                | let result-=5                         |
+| Output                 | result decreased by 5                 |
+|                        |                                       |
+|------------------------|---------------------------------------|
+| let var*=value         | Multiply var by value                 |
+| Example                | let result*=2                         |
+| Output                 | result multiplied by 2                |
+|                        |                                       |
+|------------------------|---------------------------------------|
+| let var/=value         | Divide var by value                   |
+| Example                | let result/=2                         |
+| Output                 | result divided by 2                   |
+|                        |                                       |
+|------------------------|---------------------------------------|
+| let var%=value         | Assign remainder of var/value to var  |
+| Example                | let result%=3                         |
+| Output                 | result assigned remainder             |
+|                        |                                       |
+|------------------------|---------------------------------------|
+| let var=value1+value2  | Addition                              |
+| Example                | let result=5+3                        |
+| Output                 | result is 8                           |
+|                        |                                       |
+|------------------------|---------------------------------------|
+| let var=value1-value2  | Subtraction                           |
+| Example                | let result=5-3                        |
+| Output                 | result is 2                           |
+|                        |                                       |
+|------------------------|---------------------------------------|
+| let var=value1*value2  | Multiplication                        |
+| Example                | let result=5*3                        |
+| Output                 | result is 15                          |
+|                        |                                       |
+|------------------------|---------------------------------------|
+| let var=value1/value2  | Division                              |
+| Example                | let result=10/2                       |
+| Output                 | result is 5                           |
+|                        |                                       |
+|------------------------|---------------------------------------|
+| let var=value1%value2  | Modulus (remainder)                   |
+| Example                | let result=10%3                       |
+| Output                 | result is 1                           |
+|                        |                                       |
+|------------------------|---------------------------------------|
+| let var=value1<<value2 | Left shift                            |
+| Example                | let result=2<<3                       |
+| Output                 | result is 16                          |
+|                        |                                       |
+|------------------------|---------------------------------------|
+| let var=value1>>value2 | Right shift                           |
+| Example                | let result=16>>2                      |
+| Output                 | result is 4                           |
+|                        |                                       |
+|------------------------|---------------------------------------|
+| let var=value1&value2  | Bitwise AND                           |
+| Example                | let result=5&3                        |
+| Output                 | result is 1                           |
+|                        |                                       |
+|------------------------|---------------------------------------|
+| let var=value1|value2  | Bitwise OR                            |
+| Example                | let result=5|3                        |
+| Output                 | result is 7                           |
+|                        |                                       |
+|------------------------|---------------------------------------|
+| let var=value1^value2  | Bitwise XOR                           |
+| Example                | let result=5^3                        |
+| Output                 | result is 6                           |
+|                        |                                       |
+|------------------------|---------------------------------------|
+| let var=~value         | Bitwise NOT                           |
+| Example                | let result=~5                         |
+| Output                 | result is -6                          |
+|                        |                                       |
+|------------------------|---------------------------------------|
+| let !value             | Logical NOT                           |
+| Example                | let result=!0                         |
+| Output                 | result is 1                           |
+|                        |                                       |
+|------------------------|---------------------------------------|
+| let "var=condition"    | Logical expressions                   |
+|                        |   using >, <, >=, <=, ==, !=          |
+| Example                | let "result=5>3"                      |
+| Output                 | result is 1 (true)                    |
+|                        |                                       |
+|------------------------|---------------------------------------|
+
+###################################################################
+
+
+
+###################################################################
 # array operations
 
 | Operation             | Description                          |
