@@ -171,22 +171,22 @@
 ###################################################################
 # arithmetic operators
 
-| Op      | Description                     |
---------------------------------------------|
-| ++      | increment by one pre and postfix|
-| --      | as above but decrement          |
-| +-*/    | add ... divide by and truncate  |
-| %       | modulo remainder                |
-| **      | exponentiation                  |
-| <<      | bit-shift left                  |
-| >>      | bit-shift right                 |
-| &       | bitwise and                     |
-| |       | bitwise or                      |
-| ~       | bitwise not                     |
-| !       | logical not                     |
-| ^       | bitwise exlusive or, xor        |
-| ((...)) | evaluation                      |
-| ,       | sequential evaluation           |
+| Op      | Description                       |
+----------------------------------------------|
+| ++      | increment by one, pre and postfix |
+| --      | as above but decrement            |
+| +-*/    | add ... divide by and truncate    |
+| %       | modulo remainder                  |
+| **      | exponentiation                    |
+| <<      | bit-shift left                    |
+| >>      | bit-shift right                   |
+| &       | bitwise and                       |
+| |       | bitwise or                        |
+| ~       | bitwise not                       |
+| !       | logical not                       |
+| ^       | bitwise exlusive or, xor          |
+| ((...)) | evaluation                        |
+| ,       | sequential evaluation             |
  
 ###################################################################
 
