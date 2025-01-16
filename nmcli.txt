@@ -12,3 +12,7 @@ nmcli dev wifi list
 
 # This connects to the phone hotspot 
 nmcli dev wifi connect Xperia5iii password the_password 
+
+# This connects requests to be asked for
+# a passphrase by a hotel  
+nmcli dev wifi connect hotel1 --ask 
