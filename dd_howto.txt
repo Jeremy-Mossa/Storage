@@ -1,0 +1,39 @@
++---------------------------------------------+-------------------------------------+
+| Example                                     | Explanation                         |
++---------------------------------------------+-------------------------------------+
+| dd if=/dev/zero of=file.img bs=1M           | Specifies the input file            |
+|                                             | Creates a file with 1MB block size  |
+|                                             | filled with zeros.                  |
+|                                             |                                     |
+| dd if=/dev/sda of=/dev/sdb bs=4M            | Specifies the output file           |
+|                                             | Copies data from one disk to        |
+|                                             | another with a block size of 4MB.   |
+|                                             |                                     |
+| dd if=input.txt of=output.txt bs=512        | Sets the block size for read/write  |
+|                                             | Sets the block size to 512 bytes    |
+|                                             | for read and write operations.      |
+|                                             |                                     |
+| dd if=/dev/zero of=file.img bs=1M count=100 | Copies only this number of blocks   |
+|                                             | Creates a 100MB file by writing     |
+|                                             | 100 blocks of 1MB each.             |
+|                                             |                                     |
+| dd if=/dev/sda of=backup.img bs=1M skip=100 | Skips this number of blocks in      |
+|                                             | input file                          |
+|                                             | Skips the first 100MB of the input  |
+|                                             | disk and then starts copying data.  |
+|                                             |                                     |
+| dd if=/dev/zero of=/dev/sda bs=512 seek=1   | Skips this number of blocks in      |
+|                                             | output file                         |
+|                                             | Skips the first 512 bytes of the    |
+|                                             | output disk and then starts         |
+|                                             | writing.                            |
+|                                             |                                     |
+| dd if=input.txt of=output.txt conv=ucase    | Specifies conversion options        |
+|                                             | Converts the text in the input file |
+|                                             | to uppercase and writes it to the   |
+|                                             | output file.                        |
+|                                             |                                     |
+| dd if=/dev/zero of=file.img status=progress | Specifies the level of information  |
+|                                             | Shows the progress of the dd        |
+|                                             | operation.                          |
++---------------------------------------------+-------------------------------------+
