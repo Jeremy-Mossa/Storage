@@ -1,0 +1,1 @@
+find books/ -type f \( -name "*.pdf" -o -name ".epub" \) -exec chmod -x {} \;
