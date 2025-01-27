@@ -333,6 +333,10 @@ SPECIAL APPLICATIONS:
  # remove most HTML tags (accommodates multiple-line tags)
  sed -e :a -e 's/<[^>]*>//g;/</N;//ba'
 
+ # remove [*] any brackets and the characters between them
+ echo "asdf [asdf123qwer].blah" | sed 's/\[[^]]*\]//g;s/f /f/g'
+ asdf.blah
+
  # extract multi-part uuencoded binaries, removing extraneous header
  # info, so that only the uuencoded portion remains. Files passed to
  # sed must be passed in the proper order. Version 1 can be entered
