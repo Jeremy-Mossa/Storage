@@ -1,0 +1,2 @@
+# List all the encodings that perl understands
+perl -MEncode -le "print for Encode->encodings(':all')"
