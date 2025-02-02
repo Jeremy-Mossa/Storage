@@ -1,0 +1,331 @@
+# Quick Ref
+
+# special variables
++------------------------+---------------------------------------------+
+| Special Variable       | Description and Example                     |
++------------------------+---------------------------------------------+
+| `$_`                   | Default variable for many functions and     |
+|                        | operations. Often used in loops and regex.  |
+|                        |                                             |
+|                        | foreach (@array) {                          |
+|                        |     print "$_\n";                           |
+|                        | }                                           |
++------------------------+---------------------------------------------+
+| `@_`                   | Array containing parameters passed to a     |
+|                        | subroutine.                                 |
+|                        |                                             |
+|                        | sub sub_name {                              |
+|                        |     my ($param1, $param2) = @_;             |
+|                        |     print "$param1, $param2\n";             |
+|                        | }                                           |
++------------------------+---------------------------------------------+
+| `$!`                   | Error message corresponding to the current  |
+|                        | value of the system error variable.         |
+|                        |                                             |
+|                        | open my $fh, '<', 'file.txt' or die $!;     |
++------------------------+---------------------------------------------+
+| `$?`                   | Status code returned by the last `system`   |
+|                        | or `backticks` operation.                   |
+|                        |                                             |
+|                        | system('ls');                               |
+|                        | print "Status: $?\n";                       |
++------------------------+---------------------------------------------+
+| `$0`                   | The name of the script being executed.      |
+|                        |                                             |
+|                        | print "Script name: $0\n";                  |
++------------------------+---------------------------------------------+
+| `$$`                   | The process ID (PID) of the current script. |
+|                        |                                             |
+|                        | print "PID: $$\n";                          |
++------------------------+---------------------------------------------+
+| `@ARGV`                | Array containing command-line arguments     |
+|                        | passed to the script.                       |
+|                        |                                             |
+|                        | foreach my $arg (@ARGV) {                   |
+|                        |     print "$arg\n";                         |
+|                        | }                                           |
++------------------------+---------------------------------------------+
+| `%ENV`                 | Hash containing the current environment     |
+|                        | variables.                                  |
+|                        |                                             |
+|                        | print "PATH: $ENV{PATH}\n";                 |
++------------------------+---------------------------------------------+
+| `$!`                   | The system error message for the last       |
+|                        | unsuccessful system call.                   |
+|                        |                                             |
+|                        | open(my $fh, '<', 'file.txt') or die "Error:|
+|                        | $!\n";                                      |
++------------------------+---------------------------------------------+
+| `@INC`                 | Array containing the list of directories    |
+|                        | Perl will search for modules.               |
+|                        |                                             |
+|                        | foreach my $dir (@INC) {                    |
+|                        |     print "$dir\n";                         |
+|                        | }                                           |
++------------------------+---------------------------------------------+
+| `$.`                   | Current line number for the last filehandle |
+|                        | accessed.                                   |
+|                        |                                             |
+|                        | while (<FILE>) {                            |
+|                        |     print "$. $_";                          |
+|                        | }                                           |
++------------------------+---------------------------------------------+
+| `$^O`                  | The name of the operating system Perl was   |
+|                        | built on.                                   |
+|                        |                                             |
+|                        | print "OS: $^O\n";                          |
++------------------------+---------------------------------------------+
+| `$|`                   | If set to non-zero, forces a flush after    |
+|                        | every write or print on the currently       |
+|                        | selected output channel.                    |
+|                        |                                             |
+|                        | $| = 1;                                     |
+|                        | print "Immediate flush\n";                  |
++------------------------+---------------------------------------------+
+
+###########################################################################
+# variables
++------------------+-------------------------+----------------------------+
+| Variable Type    | Example                 | Description                |
++------------------+-------------------------+----------------------------+
+| Scalar           | my $scalar = 'text';    | Single value               |
+|                  | my $number = 42;        | (string, number)           |
++------------------+-------------------------+----------------------------+
+| Array            | my @array = ('a', 'b'); | List of values             |
+|                  | my $elem = $array[0];   | Access elements            |
++------------------+-------------------------+----------------------------+
+| Hash             | my %hash = ('k' => 'v');| Key-value pairs            |
+|                  | my $val = $hash{'k'};   | Access values              |
++------------------+-------------------------+----------------------------+
+| Context          | my $count = @array;     | Scalar context             |
+|                  | my @keys = keys %hash;  | List context               |
++------------------+-------------------------+----------------------------+
+| Special Vars     | while (<STDIN>) {       | Default var $_             |
+|                  |   print if /pattern/;   |                            |
+|                  | }                       |                            |
++------------------+-------------------------+----------------------------+
+| Interpolation    | my $name = 'Alice';     | Scalars & arrays in        |
+|                  | print "Hi, $name\n";    | double quotes              |
+|                  | print "@array\n";       | Hash values need braces    |
+|                  | print "$hash{'k'}\n";   |                            |
++------------------+-------------------------+----------------------------+
+| Global Variables | our $global_var = 5;    | Accessible anywhere        |
+|                  | @global_array = (1,2);  |                            |
++------------------+-------------------------+----------------------------+
+| Lexical Variables| sub example {           | Scoped to block            |
+|                  |   my $local_var = 'x';  |                            |
+|                  | }                       |                            |
++------------------+-------------------------+----------------------------+
+| Special Vars     | my $size = scalar       | Size of array              |
+|                  | @array;                 |                            |
+|                  | my $keys = scalar       | Size of hash               |
+|                  | keys %hash;             |                            |
++------------------+-------------------------+----------------------------+
+
+###########################################################################
+# loop constructs
++------------------------+---------------------------------------------+
+| Loop Construct         | Example                                     |
++------------------------+---------------------------------------------+
+| `foreach` Loop         | Iterates over each element in an array or a |
+|                        | list.                                       |
+|                        |                                             |
+|                        | foreach my $item (@arr) {                   |
+|                        |     print "$item\n";                        |
+|                        | }                                           |
+|                        |                                             |
+|                        | foreach (@arr)                              |
+|                        | {                                           |
+|                        |   say $_;                                   |
+|                        | }                                           |
+|                        |                                             |
++------------------------+---------------------------------------------+
+| `for` Loop             | Traditional C-style for loop, with          |
+|                        | initialization, condition, and increment.   |
+|                        |                                             |
+|                        | for (my $i = 0; $i < 10; $i++) {            |
+|                        |     print "$i\n";                           |
+|                        | }                                           |
+|                        |                                             |
++------------------------+---------------------------------------------+
+| `for` Loop with Range  | Iterate over a range of numbers.            |
+|                        |                                             |
+|                        | for my $i (0..9) {                          |
+|                        |     print "$i\n";                           |
+|                        | }                                           |
+|                        |                                             |
++------------------------+---------------------------------------------+
+| `while` Loop           | Executes as long as the condition is true.  |
+|                        |                                             |
+|                        | my $count = 0;                              |
+|                        | while ($count < 5) {                        |
+|                        |     print "$count\n";                       |
+|                        |     $count++;                               |
+|                        | }                                           |
+|                        |                                             |
++------------------------+---------------------------------------------+
+| `until` Loop           | Executes until the condition becomes true   |
+|                        | (opposite of while).                        |
+|                        |                                             |
+|                        | my $count = 0;                              |
+|                        | until ($count >= 5) {                       |
+|                        |     print "$count\n";                       |
+|                        |     $count++;                               |
+|                        | }                                           |
+|                        |                                             |
++------------------------+---------------------------------------------+
+| `do-while` Loop        | Executes the block at least once before     |
+|                        | checking the condition.                     |
+|                        |                                             |
+|                        | my $count = 0;                              |
+|                        | do {                                        |
+|                        |     print "$count\n";                       |
+|                        |     $count++;                               |
+|                        | } while ($count < 5);                       |
+|                        |                                             |
++------------------------+---------------------------------------------+
+| `do-until` Loop        | Executes the block at least once before     |
+|                        | checking the condition (opposite of         |
+|                        | do-while).                                  |
+|                        |                                             |
+|                        | my $count = 0;                              |
+|                        | do {                                        |
+|                        |     print "$count\n";                       |
+|                        |     $count++;                               |
+|                        | } until ($count >= 5);                      |
+|                        |                                             |
++------------------------+---------------------------------------------+
+| `map` Function         | Transforms a list by applying a block of    |
+|                        | code to each element.                       |
+|                        |                                             |
+|                        | my @squared = map { $_ * $_ } (1..10);      |
+|                        | print "@squared\n";                         |
+|                        |                                             |
++------------------------+---------------------------------------------+
+| `grep` Function        | Filters a list by applying a block of code  |
+|                        | to each element.                            |
+|                        |                                             |
+|                        | my @evens = grep { $_ % 2 == 0 } (1..10);   |
+|                        | print "@evens\n";                           |
+|                        |                                             |
++------------------------+---------------------------------------------+
+| Labelled Loops         | Provides a way to label loops and control   |
+|                        | flow using labels.                          |
+|                        |                                             |
+|                        | LOOP: while (condition) {                   |
+|                        |     last LOOP if (condition2);              |
+|                        |     # Code                                  |
+|                        | }                                           |
+|                        |                                             |
++------------------------+---------------------------------------------+
+| Nested Loops with      | Controls loop execution in nested loops     |
+| Control Statements     | using labels.                               |
+|                        |                                             |
+|                        | OUTER: for my $i (0..2) {                   |
+|                        |     INNER: for my $j (0..2) {               |
+|                        |         last OUTER if ($i + $j > 2);        |
+|                        |         print "$i, $j\n";                   |
+|                        |     }                                       |
+|                        | }                                           |
+|                        |                                             |
++------------------------+---------------------------------------------+
+| Loop Control Statements| Controls loop execution. `last` exits the   |
+|                        | loop, `next` skips to the next iteration,   |
+|                        | and `redo` restarts the loop block.         |
+|                        |                                             |
+|                        | foreach my $item (@array) {                 |
+|                        |     next if $item eq 'skip';                |
+|                        |     last if $item eq 'stop';                |
+|                        |     print "$item\n";                        |
+|                        | }                                           |
+|                        |                                             |
++------------------------+---------------------------------------------+
+| Loop in Regular        | Uses loop-like constructs within regex      |
+| Expressions            | matching.                                   |
+|                        |                                             |
+|                        | my $string = "abcabcabc";                   |
+|                        | while ($string =~ /a(b)/g) {                |
+|                        |     print "$1\n";                           |
+|                        | }                                           |
+|                        |                                             |
++------------------------+---------------------------------------------+
+###########################################################################
+
+# subroutines
++------------------------+---------------------------------------------+
+| Subroutine Concept     | Example                                     |
++------------------------+---------------------------------------------+
+| Basic Subroutine       | Defines a subroutine and how to call it.    |
+|                        |                                             |
+|                        | sub sub_name {                              |
+|                        |     # Code                                  |
+|                        | }                                           |
+|                        |                                             |
+|                        | sub_name();                                 |
++------------------------+---------------------------------------------+
+| Subroutine with Params | Passes parameters to a subroutine.          |
+|                        |                                             |
+|                        | sub sub_name {                              |
+|                        |     my ($param1, $param2) = @_;             |
+|                        |     print "$param1, $param2\n";             |
+|                        | }                                           |
+|                        |                                             |
+|                        | sub_name('Hello', 'World');                 |
++------------------------+---------------------------------------------+
+| Return Values          | Returns values from a subroutine.           |
+|                        |                                             |
+|                        | sub add {                                   |
+|                        |     my ($a, $b) = @_;                       |
+|                        |     return $a + $b;                         |
+|                        | }                                           |
+|                        |                                             |
+|                        | my $sum = add(2, 3);                        |
+|                        | print "$sum\n";                             |
++------------------------+---------------------------------------------+
+| Private Variables      | Uses lexical variables for private scope.   |
+|                        |                                             |
+|                        | sub sub_name {                              |
+|                        |     my $var = 'local';                      |
+|                        |     # Code                                  |
+|                        | }                                           |
+|                        |                                             |
+|                        | sub_name();                                 |
++------------------------+---------------------------------------------+
+| Global Variables       | Uses global variables with `our` keyword.   |
+|                        |                                             |
+|                        | our $var = 'global';                        |
+|                        |                                             |
+|                        | sub sub_name {                              |
+|                        |     print "$var\n";                         |
+|                        | }                                           |
+|                        |                                             |
+|                        | sub_name();                                 |
++------------------------+---------------------------------------------+
+| Context Sensitivity    | Handles scalar and list contexts.           |
+|                        |                                             |
+|                        | sub context_test {                          |
+|                        |     return wantarray ? (1, 2, 3) : 'scalar';|
+|                        | }                                           |
+|                        |                                             |
+|                        | my @list = context_test();                  |
+|                        | my $scalar = context_test();                |
++------------------------+---------------------------------------------+
+| Subroutine References  | References and dereferences a subroutine.   |
+|                        |                                             |
+|                        | my $sub_ref = \&sub_name;                   |
+|                        |                                             |
+|                        | &$sub_ref();                                |
+|                        | # or                                        |
+|                        | $sub_ref->();                               |
++------------------------+---------------------------------------------+
+| Anonymous Subroutines  | Creates and uses anonymous subroutines.     |
+|                        |                                             |
+|                        | my $anon_sub = sub {                        |
+|                        |     print "Hello from anon sub\n";          |
+|                        | };                                          |
+|                        |                                             |
+|                        | $anon_sub->();                              |
++------------------------+---------------------------------------------+
+
+###########################################################################
+#
