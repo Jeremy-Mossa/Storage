@@ -328,4 +328,716 @@
 +------------------------+---------------------------------------------+
 
 ###########################################################################
-#
+# comparison
++-------------------------+--------------------------------------------+
+| Operator                | Example and Description                    |
++-------------------------+--------------------------------------------+
+| `==`                    | Numeric equality.                          |
+|                         | `$a == $b`                                 |
++-------------------------+--------------------------------------------+
+| `!=`                    | Numeric inequality.                        |
+|                         | `$a != $b`                                 |
++-------------------------+--------------------------------------------+
+| `<`                     | Numeric less than.                         |
+|                         | `$a < $b`                                  |
++-------------------------+--------------------------------------------+
+| `<=`                    | Numeric less than or equal to.             |
+|                         | `$a <= $b`                                 |
++-------------------------+--------------------------------------------+
+| `>`                     | Numeric greater than.                      |
+|                         | `$a > $b`                                  |
++-------------------------+--------------------------------------------+
+| `>=`                    | Numeric greater than or equal to.          |
+|                         | `$a >= $b`                                 |
++-------------------------+--------------------------------------------+
+| `<=>`                   | Numeric comparison, returns -1, 0, or 1.   |
+|                         | `my $result = $a <=> $b;`                  |
+|                         | `print "Result: $result\n";`               |
++-------------------------+--------------------------------------------+
+| `eq`                    | String equality.                           |
+|                         | `$a eq $b`                                 |
++-------------------------+--------------------------------------------+
+| `ne`                    | String inequality.                         |
+|                         | `$a ne $b`                                 |
++-------------------------+--------------------------------------------+
+| `lt`                    | String less than.                          |
+|                         | `$a lt $b`                                 |
++-------------------------+--------------------------------------------+
+| `le`                    | String less than or equal to.              |
+|                         | `$a le $b`                                 |
++-------------------------+--------------------------------------------+
+| `gt`                    | String greater than.                       |
+|                         | `$a gt $b`                                 |
++-------------------------+--------------------------------------------+
+| `ge`                    | String greater than or equal to.           |
+|                         | `$a ge $b`                                 |
++-------------------------+--------------------------------------------+
+| `cmp`                   | String comparison, returns -1, 0, or 1.    |
+|                         | `my $result = $a cmp $b;`                  |
+|                         | `print "Result: $result\n";`               |
++-------------------------+--------------------------------------------+
+
+###########################################################################
+
+# arrays and lists 
++--------------------------+--------------------------------------------+
+| Concept                  | Example and Description                    |
++--------------------------+--------------------------------------------+
+| Declaring Arrays         | Use `@` to declare an array.               |
+|                          |                                            |
+|                          | my @fruits = ('apple', 'banana', 'cherry');|
+|                          | my @empty_array = ();                      |
++--------------------------+--------------------------------------------+
+| Accessing Elements       | Use `$` with index to access elements.     |
+|                          |                                            |
+|                          | my $first = $fruits[0];  # 'apple'         |
+|                          | my $last  = $fruits[-1]; # 'cherry'        |
++--------------------------+--------------------------------------------+
+| Assigning Elements       | Directly assign to specific indices.       |
+|                          |                                            |
+|                          | $fruits[0] = 'pear';                       |
+|                          | $fruits[-1] = 'grape';                     |
++--------------------------+--------------------------------------------+
+| Array Length             | Use `scalar @array` to get array length.   |
+|                          |                                            |
+|                          | my $length = scalar @fruits;               |
+|                          | # Length: 3                                |
++--------------------------+--------------------------------------------+
+| Adding Elements          | Use `push` and `unshift` to add elements.  |
+|                          |                                            |
+|                          | push(@fruits, 'kiwi');     # Add to end    |
+|                          | unshift(@fruits, 'mango'); # Add to start  |
+|                          |                                            |
+|                          | # @fruits now ('mango', 'pear', 'banana',  |
+|                          | 'grape', 'kiwi')                           |
++--------------------------+--------------------------------------------+
+| Removing Elements        | Use `pop` and `shift` to remove elements.  |
+|                          |                                            |
+|                          | my $last_fruit  = pop(@fruits);            |
+|                          |                   # Remove last            |
+|                          |                                            |
+|                          | my $first_fruit = shift(@fruits);          |
+|                          |                   # Remove first           |
+|                          |                                            |
+|                          | # $last_fruit is 'kiwi'                    |
+|                          | # $first_fruit is 'mango'                  |
+|                          | # @fruits now   ('pear', 'banana', 'grape')|
++--------------------------+--------------------------------------------+
+| Slicing Arrays           | Use `@array[start..end]` to slice arrays.  |
+|                          |                                            |
+|                          | my @fruits = ('apple', 'banana', 'cherry', |
+|                          |                                  'date');  |
+|                          |                                            |
+|                          | my @slice = @fruits[1..2];                 |
+|                          | # @slice is ('banana', 'cherry')           |
+|                          |                                            |
+|                          | # Slice with negative indices              |
+|                          | my @reverse_slice = @fruits[-3..-1];       |
+|                          | # @reverse_slice is ('banana', 'cherry'    |
+|                          |                                'date')     |
+|                          |                                            |
++--------------------------+--------------------------------------------+
+| Splicing Arrays          | Use `splice` to remove/replace array parts.|
+|                          |                                            |
+|                          | my @fruits = ('apple', 'banana', 'cherry', |
+|                          |                                  'date');  |
+|                          | my @removed = splice(@fruits, 1, 2);       |
+|                          | # @removed is ('banana', 'cherry')         |
+|                          | # @fruits is ('apple', 'date')             |
+|                          |                                            |
+|                          | # Splice with replacement                  |
+|                          | splice(@fruits, 1, 1, 'plum');             |
+|                          | # @fruits is ('apple', 'plum', 'date')     |
+|                          |                                            |
+|                          | # Splice to insert without removing        |
+|                          | splice(@fruits, 2, 0, 'kiwi');             |
+|                          | # @fruits is ('apple', 'plum', 'kiwi',     |
+|                          |                                'date')     |
+|                          |                                            |
+|                          | # Splice to remove without replacement     |
+|                          | splice(@fruits, 1, 2);                     |
+|                          | # @fruits is ('apple', 'date')             |
++--------------------------+--------------------------------------------+
+| Iterating Arrays         | Use `foreach` or `for` to iterate.         |
+|                          |                                            |
+|                          | foreach my $fruit (@fruits) {              |
+|                          |     print "$fruit\n";                      |
+|                          | }                                          |
+|                          |                                            |
+|                          | for my $i (0..$#fruits) {                  |
+|                          |     print "$fruits[$i]\n";                 |
+|                          | }                                          |
++--------------------------+--------------------------------------------+
+| Map Function             | Use `map` to transform arrays.             |
+|                          |                                            |
+|                          | my @upper_fruits = map { uc $_ } @fruits;  |
+|                          | # @upper_fruits is ('APPLE', 'BANANA',     |
+|                          |                     'CHERRY')              |
++--------------------------+--------------------------------------------+
+| Grep Function            | Use `grep` to filter arrays.               |
+|                          |                                            |
+|                          | my @a_fruits = grep { /^a/ } @fruits;      |
+|                          | # @a_fruits is ('apple')                   |
++--------------------------+--------------------------------------------+
+| Joining Arrays           | Use `join` to combine array elements into  |
+|                          | a string.                                  |
+|                          |                                            |
+|                          | my @fruits = ('apple', 'banana', 'cherry');|
+|                          | my $fruit_str = join(", ", @fruits);       |
+|                          | # 'apple, banana, cherry'                  |
+|                          |                                            |
+|                          | # Join with different separator            |
+|                          | my $path = join("/", 'home', 'user',       |
+|                          |                      'docs');              |
+|                          | # 'home/user/docs'                         |
++--------------------------+--------------------------------------------+
+| Splitting Strings        | Use `split` to divide strings into arrays. |
+|                          |                                            |
+|                          | my $str = "apple,banana,cherry";           |
+|                          | my @fruits = split(",", $str);             |
+|                          | # ('apple', 'banana', 'cherry')            |
+|                          |                                            |
+|                          | # Split with regex                         |
+|                          | my $data = "one-two-three";                |
+|                          | my @words = split(/-/, $data);             |
+|                          | # ('one', 'two', 'three')                  |
+|                          |                                            |
+|                          | # Split into characters                    |
+|                          | my $word = "Perl";                         |
+|                          | my @letters = split("", $word);            |
+|                          | # ('P', 'e', 'r', 'l')                     |
++--------------------------+--------------------------------------------+
+| Sorting Arrays           | Use `sort` to sort arrays.                 |
+|                          |                                            |
+|                          | my @sorted_fruits = sort @fruits;          |
+|                          | # ('apple', 'banana', 'cherry')            |
+|                          |                                            |
+|                          | my @num_sorted = sort { $a <=> $b } (4, 2, |
+|                          |                                      8);   |
+|                          | # (2, 4, 8)                                |
+|                          |                                            |
++--------------------------+--------------------------------------------+
+| Array References         | Use `\@array` to create array references.  |
+|                          |                                            |
+|                          | my @fruits = ('apple', 'banana', 'cherry');|
+|                          | my $fruits_ref = \@fruits;                 |
+|                          | print $fruits_ref->[0]; # 'apple'          |
++--------------------------+--------------------------------------------+
+| Dereferencing Arrays     | Use `@$array_ref` to dereference arrays.   |
+|                          |                                            |
+|                          | my @dereferenced = @$fruits_ref;           |
+|                          | # @dereferenced is ('apple', 'banana',     |
+|                          |                     'cherry')              |
++--------------------------+--------------------------------------------+
+| Multidimensional Arrays  | Use array references to create             |
+|                          | multidimensional arrays.                   |
+|                          |                                            |
+|                          | my @matrix = ([1, 2], [3, 4]);             |
+|                          | print $matrix[0][1];  # 2                  |
+|                          |                                            |
+|                          | # Accessing elements in a 2D array         |
+|                          | for my $row (@matrix) {                    |
+|                          |     for my $col (@$row) {                  |
+|                          |         print "$col ";                     |
+|                          |     }                                      |
+|                          |     print "\n";                            |
+|                          | }                                          |
++--------------------------+--------------------------------------------+
+
+###########################################################################
+
+# hashes
++--------------------------+--------------------------------------------+
+| Concept                  | Example and Description                    |
++--------------------------+--------------------------------------------+
+| Declaring Hashes         | Use `%` to declare a hash.                 |
+|                          |                                            |
+|                          | my %fruit_colors = (                       |
+|                          |     apple  => 'red',                       |
+|                          |     banana => 'yellow',                    |
+|                          |     grape  => 'purple'                     |
+|                          | );                                         |
++--------------------------+--------------------------------------------+
+| Accessing Values         | Use `$` with key to access values.         |
+|                          |                                            |
+|                          | my $apple_color = $fruit_colors{apple};    |
+|                          | # 'red'                                    |
++--------------------------+--------------------------------------------+
+| Assigning Values         | Directly assign to specific keys.          |
+|                          |                                            |
+|                          | $fruit_colors{banana} = 'green';           |
+|                          | $fruit_colors{orange} = 'orange';          |
++--------------------------+--------------------------------------------+
+| Checking Existence       | Use `exists` to check if a key exists.     |
+|                          |                                            |
+|                          | if (exists $fruit_colors{apple}) {         |
+|                          |     print "Apple exists\n";                |
+|                          | }                                          |
++--------------------------+--------------------------------------------+
+| Deleting Keys            | Use `delete` to remove key-value pairs.    |
+|                          |                                            |
+|                          | delete $fruit_colors{grape};               |
+|                          | # %fruit_colors is now                     |
+|                          | # (apple => 'red',                         |
+|                          | #  banana => 'green',                      |
+|                          | #  orange => 'orange')                     |
++--------------------------+--------------------------------------------+
+| Iterating Hashes         | Use `foreach` to iterate over keys or      |
+|                          | values.                                    |
+|                          |                                            |
+|                          | foreach my $fruit (keys %fruit_colors) {   |
+|                          |   print "$fruit: $fruit_colors{$fruit}\n"; |
+|                          | }                                          |
+|                          |                                            |
+|                          | foreach my $color (values %fruit_colors) { |
+|                          |   print "$color\n";                        |
+|                          | }                                          |
++--------------------------+--------------------------------------------+
+| Hash Slices              | Use `@hash{keys}` to get multiple values.  |
+|                          |                                            |
+|                          | my @selected_colors =                      |
+|                          |     @fruit_colors{'apple', 'banana'};      |
+|                          | # @selected_colors is ('red', 'green')     |
++--------------------------+--------------------------------------------+
+| Converting Hash to Array | Use `@hash` to convert hash to array.      |
+|                          |                                            |
+|                          | my @array = %fruit_colors;                 |
+|                          | # @array is ('apple', 'red', 'banana',     |
+|                          | #  'green', 'orange', 'orange')            |
++--------------------------+--------------------------------------------+
+| Converting Array to Hash | Use `%array` to convert array to hash.     |
+|                          |                                            |
+|                          | my @array = ('apple', 'red', 'banana',     |
+|                          | # 'yellow');                               |
+|                          | my %hash = @array;                         |
+|                          | # %hash is (apple => 'red',                |
+|                          | #  banana => 'yellow')                     |
++--------------------------+--------------------------------------------+
+| Hash of Hashes           | Use nested hashes for complex structures.  |
+|                          |                                            |
+|                          | my %fruit_info = (                         |
+|                          |     apple  => {                            |
+|                          |         color => 'red',                    |
+|                          |         taste => 'sweet'                   |
+|                          |     },                                     |
+|                          |     banana => {                            |
+|                          |         color => 'yellow',                 |
+|                          |         taste => 'sweet'                   |
+|                          |     }                                      |
+|                          | );                                         |
+|                          |                                            |
+|                          | print $fruit_info{apple}{color};           |
+|                          | # 'red'                                    |
++--------------------------+--------------------------------------------+
+| Hash References          | Use `\%hash` to create hash references.    |
+|                          |                                            |
+|                          | my $fruit_colors_ref = \%fruit_colors;     |
+|                          | print $fruit_colors_ref->{apple};          |
+|                          | # 'red'                                    |
++--------------------------+--------------------------------------------+
+| Dereferencing Hashes     | Use `%$hash_ref` to dereference hashes.    |
+|                          |                                            |
+|                          | my %dereferenced = %$fruit_colors_ref;     |
+|                          | # %dereferenced is (apple => 'red',        |
+|                          | #  banana => 'green',                      |
+|                          | #  orange => 'orange')                     |
++--------------------------+--------------------------------------------+
+
+###########################################################################
+
+# regex regular expressions
++------------------------+---------------------------------------------+
+| Concept                | Example and Description                     |
++------------------------+---------------------------------------------+
+| Matching               | Use `=~` to match patterns in a string.     |
+|                        |                                             |
+|                        | my $str = "hello world";                    |
+|                        | if ($str =~ /hello/) {                      |
+|                        |     print "Match found!\n";                 |
+|                        | }                                           |
++------------------------+---------------------------------------------+
+| Case Insensitive Match | Use `i` modifier for case-insensitive match.|
+|                        |                                             |
+|                        | if ($str =~ /HELLO/i) {                     |
+|                        |     print "Match found!\n";                 |
+|                        | }                                           |
++------------------------+---------------------------------------------+
+| Anchors                | Use `^` and `$` to match start/end of string|
+|                        |                                             |
+|                        | if ($str =~ /^hello/) {                     |
+|                        |     print "Starts with hello\n";            |
+|                        | }                                           |
+|                        | if ($str =~ /world$/) {                     |
+|                        |     print "Ends with world\n";              |
+|                        | }                                           |
++------------------------+---------------------------------------------+
+| Quantifiers            | Use `*`, `+`, `?`, and `{}` for repetition. |
+|                        |                                             |
+|                        | my $text = "aaa";                           |
+|                        | if ($text =~ /a{3}/) {                      |
+|                        |     print "Exactly 3 a's\n";                |
+|                        | }                                           |
+|                        | if ($text =~ /a*/) {                        |
+|                        |     print "0 or more a's\n";                |
+|                        | }                                           |
++------------------------+---------------------------------------------+
+| Character Classes      | Use `[]` for character sets and `\d`, `\w`, |
+|                        | `\s` for pre-defined sets.                  |
+|                        |                                             |
+|                        | if ($str =~ /[aeiou]/) {                    |
+|                        |     print "Contains a vowel\n";             |
+|                        | }                                           |
+|                        | if ($str =~ /\d/) {                         |
+|                        |     print "Contains a digit\n";             |
+|                        | }                                           |
++------------------------+---------------------------------------------+
+| Negated Classes        | Use `[^]` for negated character sets.       |
+|                        |                                             |
+|                        | if ($str =~ /[^aeiou]/) {                   |
+|                        |     print "Contains a non-vowel\n";         |
+|                        | }                                           |
++------------------------+---------------------------------------------+
+| Alternation            | Use `|` for alternation (logical OR).       |
+|                        |                                             |
+|                        | if ($str =~ /hello|world/) {                |
+|                        |     print "Contains hello or world\n";      |
+|                        | }                                           |
++------------------------+---------------------------------------------+
+| Grouping               | Use `()` for grouping and capturing.        |
+|                        |                                             |
+|                        | if ($str =~ /(hello) (world)/) {            |
+|                        |     print "First: $1, Second: $2\n";        |
+|                        | }                                           |
++------------------------+---------------------------------------------+
+| Non-Capturing Groups   | Use `(?:)` for non-capturing groups.        |
+|                        |                                             |
+|                        | if ($str =~ /(?:hello) (world)/) {          |
+|                        |     print "Second: $1\n";                   |
+|                        | }                                           |
++------------------------+---------------------------------------------+
+| Lookahead              | Use `(?=...)` for positive lookahead.       |
+|                        |                                             |
+|                        | if ($str =~ /hello(?= world)/) {            |
+|                        |     print "Followed by world\n";            |
+|                        | }                                           |
++------------------------+---------------------------------------------+
+| Lookbehind             | Use `(?<=...)` for positive lookbehind.     |
+|                        |                                             |
+|                        | if ($str =~ /(?<=hello) world/) {           |
+|                        |     print "Preceded by hello\n";            |
+|                        | }                                           |
++------------------------+---------------------------------------------+
+| Substitution           | Use `s///` for search and replace.          |
+|                        |                                             |
+|                        | my $text = "hello world";                   |
+|                        | $text =~ s/hello/hi/;                       |
+|                        | print "$text\n"; # 'hi world'               |
++------------------------+---------------------------------------------+
+| Global Replacement     | Use `g` modifier for global replacement.    |
+|                        |                                             |
+|                        | my $text = "hello hello world";             |
+|                        | $text =~ s/hello/hi/g;                      |
+|                        | print "$text\n"; # 'hi hi world'            |
++------------------------+---------------------------------------------+
+| Transliteration        | Use `tr///` for character translation.      |
+|                        |                                             |
+|                        | my $text = "hello world";                   |
+|                        | $text =~ tr/hw/HW/;                         |
+|                        | print "$text\n"; # 'Hello World'            |
++------------------------+---------------------------------------------+
+| Extended Patterns      | Use `x` modifier for extended patterns.     |
+|                        |                                             |
+|                        | my $regex = qr/                             |
+|                        |     hello     # Match the word 'hello'      |
+|                        |     \s+       # One or more whitespace chars|
+|                        |     world     # Match the word 'world'      |
+|                        | /x;                                         |
+|                        | if ($str =~ $regex) {                       |
+|                        |     print "Match found with extended        |
+|                        |                             pattern!\n";    |
+|                        | }                                           |
++------------------------+---------------------------------------------+
+| Named Capture Groups   | Use `(?<name>...)` for named capture groups.|
+|                        |                                             |
+|                        | if ($str =~ /(?<greeting>hello) (?          |
+|                        |                <place>world)/) {            |
+|                        |     print "Greeting: $+{greeting},          | 
+|                        |            Place: $+{place}\n";             |                                |
+|                        | }                                           |
++------------------------+---------------------------------------------+
+| Non-Greedy Quantifiers | Use `*?`, `+?`, `??`, `{min,max}?` for non- |
+|                        | greedy matching.                            |
+|                        |                                             |
+|                        | my $html = "<b>bold</b><b>text</b>";        |
+|                        | if ($html =~ /<b>(.*?)<\/b>/) {             |
+|                        |     print "First bold text: $1\n";          |
+|                        | }                                           |
++------------------------+---------------------------------------------+
+| Unicode Matching       | Use `\p{Property}` and `\P{Property}` for   |
+|                        | Unicode property matching.                  |
+|                        |                                             |
+|                        | if ($str =~ /\p{Lu}/) {                     |
+|                        |     print "Contains an uppercase letter\n"; |
+|                        | }                                           |
++------------------------+---------------------------------------------+
+| Embedded Code          | Use `(?{ ... })` to embed Perl code within a|
+|                        | regex.                                      |
+|                        |                                             |
+|                        | if ($str =~ /(\d+)(?(?{ $^N > 10 })(        |
+|                        |                     ?<gt10>\d{2}))/) {      |
+|                        |     print "Match found with embedded        |
+|                        |                             code!\n";       |
+|                        | }                                           |
++------------------------+---------------------------------------------+
+| POSIX Character Classes| Use `[:class:]` within brackets for POSIX   |
+|                        | character classes.                          |
+|                        |                                             |
+|                        | Posix:                                      |
+|                        | [:alnum:] alphanumeric                      |
+|                        | [:alpha:] alphabetic                        |
+|                        | [:ascii:] any ASCII char                    |
+|                        | [:blank:] whitespace [ \t]                  |
+|                        | [:cntrl:] control characters                |
+|                        | [:digit:] digits                            |
+|                        | [:graph:] alphanum + punctuation            |
+|                        | [:lower:] lowercase chars                   |
+|                        | [:print:] alphanum, punct, space            |
+|                        | [:punct:] punctuation                       |
+|                        | [:space:] whitespace [\s\ck]                |
+|                        | [:upper:] uppercase chars                   |
+|                        | [:word:] alphanum + '_'                     |
+|                        | [:xdigit:] hex digit                        |
+|                        | [:^digit:] non-digit                        |
+|                        |                                             |
+|                        | if ($str =~ /[[:digit:]]/) {                |
+|                        |     print "Contains a digit\n";             |
+|                        | }                                           |
++------------------------+---------------------------------------------+
+| Recursive Patterns     | Use `(?R)` for recursive pattern matching.  |
+|                        |                                             |
+|                        | if ($str =~ /(\() (?R)? (\))/x) {           |
+|                        |     print "Matched nested parentheses\n";   |
+|                        | }                                           |
++------------------------+---------------------------------------------+
+
+###########################################################################
+
+# I/O input/output
++------------------------+---------------------------------------------+
+| Concept                | Example and Description                     |
++------------------------+---------------------------------------------+
+| Reading from STDIN     | Use `<STDIN>` to read input from the user.  |
+|                        |                                             |
+|                        | print "Enter your name: ";                  |
+|                        | my $name = <STDIN>;                         |
+|                        | chomp($name);                               |
+|                        | print "Hello, $name!\n";                    |
++------------------------+---------------------------------------------+
+| Writing to STDOUT      | Use `print` to write output to the console. |
+|                        |                                             |
+|                        | print "Hello, World!\n";                    |
++------------------------+---------------------------------------------+
+| Reading a File         | Use `open`, `<FILEHANDLE>` to read a file.  |
+|                        |                                             |
+|                        | open(my $fh, '<', 'filename.txt')           |
+|                        |     or die "Cannot open file: $!";          |
+|                        | while (my $line = <$fh>) {                  |
+|                        |     chomp($line);                           |
+|                        |     print "$line\n";                        |
+|                        | }                                           |
+|                        | close($fh);                                 |
++------------------------+---------------------------------------------+
+| Writing to a File      | Use `open`, `print` to write to a file.     |
+|                        |                                             |
+|                        | open(my $fh, '>', 'filename.txt')           |
+|                        |     or die "Cannot open file: $!";          |
+|                        | print $fh "Hello, File!\n";                 |
+|                        | close($fh);                                 |
++------------------------+---------------------------------------------+
+| Appending to a File    | Use `open`, `print` to append to a file.    |
+|                        |                                             |
+|                        | open(my $fh, '>>', 'filename.txt')          |
+|                        |     or die "Cannot open file: $!";          |
+|                        | print $fh "Appending this line.\n";         |
+|                        | close($fh);                                 |
++------------------------+---------------------------------------------+
+| Reading a File into    | Use `slurp` mode to read entire file into   |
+| a Scalar               | a scalar variable.                          |
+|                        |                                             |
+|                        | open(my $fh, '<', 'filename.txt')           |
+|                        |     or die "Cannot open file: $!";          |
+|                        | local $/;                                   |
+|                        | my $content = <$fh>;                        |
+|                        | close($fh);                                 |
+|                        | print $content;                             |
++------------------------+---------------------------------------------+
+| Reading Command Output | Use backticks or `qx//` to capture command  |
+|                        | output.                                     |
+|                        |                                             |
+|                        | my $output = `ls -l`;                       |
+|                        | print $output;                              |
++------------------------+---------------------------------------------+
+| Writing to STDERR      | Use `warn` or `print STDERR` to write to    |
+|                        | STDERR.                                     |
+|                        |                                             |
+|                        | warn "This is a warning!\n";                |
+|                        | print STDERR "This is an error message.\n"; |
++------------------------+---------------------------------------------+
+| Redirecting STDOUT     | Use shell redirection to redirect STDOUT.   |
+|                        |                                             |
+|                        | perl script.pl > output.txt                 |
++------------------------+---------------------------------------------+
+| Redirecting STDERR     | Use shell redirection to redirect STDERR.   |
+|                        |                                             |
+|                        | perl script.pl 2> error.log                 |
++------------------------+---------------------------------------------+
+| Redirecting Both       | Use shell redirection to redirect both      |
+| STDOUT and STDERR      | STDOUT and STDERR.                          |
+|                        |                                             |
+|                        | perl script.pl > output.txt 2>&1            |
++------------------------+---------------------------------------------+
+| Reading from a File    | Use `<>` to read input from a file or       |
+| or STDIN               | standard input.                             |
+|                        |                                             |
+|                        | while (<>) {                                |
+|                        |     chomp;                                  |
+|                        |     print "$_\n";                           |
+|                        | }                                           |
++------------------------+---------------------------------------------+
+| Printing Formatted     | Use `printf` for formatted output.          |
+| Output                 |                                             |
+|                        | my $number = 42;                            |
+|                        | printf("Number: %d\n", $number);            |
++------------------------+---------------------------------------------+
+| Reading Binary Files   | Use `binmode` to read binary files.         |
+|                        |                                             |
+|                        | open(my $fh, '<:raw', 'image.png')          |
+|                        |     or die "Cannot open file: $!";          |
+|                        | binmode($fh);                               |
+|                        | while (read($fh, my $buffer, 1024)) {       |
+|                        |     # Process binary data                   |
+|                        | }                                           |
+|                        | close($fh);                                 |
++------------------------+---------------------------------------------+
+| Writing Binary Files   | Use `binmode` to write binary files.        |
+|                        |                                             |
+|                        | open(my $fh, '>:raw', 'output.bin')         |
+|                        |     or die "Cannot open file: $!";          |
+|                        | binmode($fh);                               |
+|                        | print $fh $binary_data;                     |
+|                        | close($fh);                                 |
++------------------------+---------------------------------------------+
+  
+###########################################################################
+
+# system interaction
++-------------------------+---------------------------------------------+
+| Concept                 | Example and Description                     |
++-------------------------+---------------------------------------------+
+| Running Shell Commands  | Use backticks or `qx//` to run shell        |
+|                         | commands and capture their output.          |
+|                         |                                             |
+|                         | my $output = `ls -l`;                       |
+|                         | print $output;                              |
++-------------------------+---------------------------------------------+
+| Using `system` Function | Use `system` to run shell commands and      |
+|                         | capture their exit status.                  |
+|                         |                                             |
+|                         | my $status = system('ls -l');               |
+|                         | print "Exit status: $status\n";             |
++-------------------------+---------------------------------------------+
+| Running External Scripts| Use `exec` to replace the current process   |
+|                         | with an external script.                    |
+|                         |                                             |
+|                         | exec('perl', 'script.pl');                  |
++-------------------------+---------------------------------------------+
+| Capturing Exit Status   | Use `$?` to capture the exit status of the  |
+|                         | last command run.                           |
+|                         |                                             |
+|                         | system('ls -l');                            |
+|                         | print "Exit status: $?\n";                  |
++-------------------------+---------------------------------------------+
+| Environment Variables   | Use `%ENV` to access environment variables. |
+|                         |                                             |
+|                         | print "PATH: $ENV{PATH}\n";                 |
+|                         | $ENV{MY_VAR} = 'value';                     |
++-------------------------+---------------------------------------------+
+| Changing Directory      | Use `chdir` to change the current directory.|
+|                         |                                             |
+|                         | chdir('/path/to/dir') or die "Cannot chdir: |
+|                         | $!";                                        |
++-------------------------+---------------------------------------------+
+| Creating Directories    | Use `mkdir` to create new directories.      |
+|                         |                                             |
+|                         | mkdir('new_dir', 0755) or die "Cannot mkdir:|
+|                         | $!";                                        |
++-------------------------+---------------------------------------------+
+| Removing Directories    | Use `rmdir` to remove empty directories.    |
+|                         |                                             |
+|                         | rmdir('old_dir') or die "Cannot rmdir: $!"; |
++-------------------------+---------------------------------------------+
+| Removing Files          | Use `unlink` to delete files.               |
+|                         |                                             |
+|                         | unlink('file.txt') or warn "Cannot unlink:  |
+|                         | $!";                                        |
++-------------------------+---------------------------------------------+
+| Renaming Files          | Use `rename` to rename files.               |
+|                         |                                             |
+|                         | rename('old.txt', 'new.txt') or die "Cannot |
+|                         | rename: $!";                                |
++-------------------------+---------------------------------------------+
+| Changing Permissions    | Use `chmod` to change file permissions.     |
+|                         |                                             |
+|                         | chmod 0755, 'script.pl' or die "Cannot chmod:|
+|                         | $!";                                        |
++-------------------------+---------------------------------------------+
+| Changing Ownership      | Use `chown` to change file ownership.       |
+|                         |                                             |
+|                         | chown $uid, $gid, 'file.txt' or die "Cannot |
+|                         | chown: $!";                                 |
++-------------------------+---------------------------------------------+
+| Setting Umask           | Use `umask` to set the file mode creation   |
+|                         | mask.                                       |
+|                         |                                             |
+|                         | my $old_umask = umask 0022;                 |
++-------------------------+---------------------------------------------+
+| Reading System Info     | Use `uname` to read system information.     |
+|                         |                                             |
+|                         | my $sysinfo = `uname -a`;                   |
+|                         | print $sysinfo;                             |
++-------------------------+---------------------------------------------+
+| Forking Processes       | Use `fork` to create a new process.         |
+|                         |                                             |
+|                         | my $pid = fork();                           |
+|                         | if ($pid == 0) {                            |
+|                         |     # Child process                         |
+|                         |     print "This is the child process\n";    |
+|                         |     exit 0;                                 |
+|                         | } else {                                    |
+|                         |     # Parent process                        |
+|                         |     print "This is the parent process\n";   |
+|                         |     waitpid($pid, 0);                       |
+|                         | }                                           |
++-------------------------+---------------------------------------------+
+| Handling Signals        | Use `%SIG` to set up signal handlers.       |
+|                         |                                             |
+|                         | $SIG{INT} = sub {                           |
+|                         |     print "Caught INT signal\n";            |
+|                         |     exit 0;                                 |
+|                         | };                                          |
+|                         | while (1) {                                 |
+|                         |     print "Running...\n";                   |
+|                         |     sleep 1;                                |
+|                         | }                                           |
++-------------------------+---------------------------------------------+
+| Interacting with Files  | Use `stat`, `lstat` to get file information.|
+|                         |                                             |
+|                         | my ($dev, $ino, $mode, $nlink, $uid, $gid,  |
+|                         | $rdev, $size, $atime, $mtime, $ctime,       |
+|                         | $blksize, $blocks) = stat('file.txt');      |
+|                         | print "File size: $size bytes\n";           |
++-------------------------+---------------------------------------------+
+
+###########################################################################
+
+# 
