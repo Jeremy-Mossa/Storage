@@ -1040,4 +1040,344 @@
 
 ###########################################################################
 
-# 
+# one-liners
++-----------------------------+------------------------------------------+
+| Task                        | Perl One-Liner                           |
++-----------------------------+------------------------------------------+
+| Print Lines Matching        | Print lines containing "pattern".        |
+| Pattern                     |                                          |
+|                             | perl -ne 'print if /pattern/' file.txt   |
++-----------------------------+------------------------------------------+
+| Print Line Numbers          | Print line numbers containing "pattern". |
+| Matching Pattern            |                                          |
+|                             | perl -ne 'print "$. $_" if /pattern/'    |
+|                             | file.txt                                 |
++-----------------------------+------------------------------------------+
+| Print Lines Not Matching    | Print lines not containing "pattern".    |
+| Pattern                     |                                          |
+|                             | perl -ne 'print unless /pattern/'        |
+|                             | file.txt                                 |
++-----------------------------+------------------------------------------+
+| Replace Text                | Replace "old" with "new" in file and     |
+|                             | print.                                   |
+|                             | perl -pe 's/old/new/g' file.txt          |
++-----------------------------+------------------------------------------+
+| Delete Lines Matching       | Delete lines containing "pattern".       |
+| Pattern                     |                                          |
+|                             | perl -ne 'print unless /pattern/'        |
+|                             | file.txt                                 |
++-----------------------------+------------------------------------------+
+| Count Lines                 | Count number of lines in file.           |
+|                             |                                          |
+|                             | perl -lne 'END { print $. }' file.txt    |
++-----------------------------+------------------------------------------+
+| Count Matching Lines        | Count number of lines matching           |
+|                             | "pattern".                               |
+|                             |                                          |
+|                             | perl -lne 'END { print $count }' -e      |
+|                             | '$count++ if /pattern/' file.txt         |
++-----------------------------+------------------------------------------+
+| Print File Backwards        | Print file in reverse line order.        |
+|                             |                                          |
+|                             | perl -e 'print reverse <>' file.txt      |
++-----------------------------+------------------------------------------+
+| Print Only Unique Lines     | Print only unique lines in file.         |
+|                             |                                          |
+|                             | perl -ne '$seen{$_}++ || print'          |
+|                             | file.txt                                 |
++-----------------------------+------------------------------------------+
+| Print Duplicate Lines       | Print duplicate lines in file.           |
+|                             |                                          |
+|                             | perl -ne '$seen{$_}++ && print'          |
+|                             | file.txt                                 |
++-----------------------------+------------------------------------------+
+| Calculate Sum of Numbers    | Calculate sum of numbers in file.        |
+|                             |                                          |
+|                             | perl -lne '$sum += $_; END { print $sum  |
+|                             | }' file.txt                              |
++-----------------------------+------------------------------------------+
+| Calculate Average           | Calculate average of numbers in file.    |
+|                             |                                          |
+|                             | perl -lne '$sum += $_; $count++; END {   |
+|                             | print $sum/$count }' file.txt            |
++-----------------------------+------------------------------------------+
+| Print Random Line           | Print a random line from file.           |
+|                             |                                          |
+|                             | perl -ne 'rand($.) < 1 && ($line = $_);  |
+|                             | END { print $line }' file.txt            |
++-----------------------------+------------------------------------------+
+| Convert Tabs to Spaces      | Convert tabs to spaces in file and print.|
+|                             |                                          |
+|                             | perl -pe 's/\t/    /g' file.txt          |
++-----------------------------+------------------------------------------+
+| Remove Blank Lines          | Remove blank lines from file and print.  |
+|                             |                                          |
+|                             | perl -ne 'print if /\S/' file.txt        |
++-----------------------------+------------------------------------------+
+| Insert Line Numbers         | Insert line numbers before each line.    |
+|                             |                                          |
+|                             | perl -lne 'print "$. $_"' file.txt       |
++-----------------------------+------------------------------------------+
+| Capitalize Words            | Capitalize the first letter of each word.|
+|                             |                                          |
+|                             | perl -pe 's/\b(\w)/\u$1/g' file.txt      |
++-----------------------------+------------------------------------------+
+| Lowercase Words             | Convert all letters to lowercase.        |
+|                             |                                          |
+|                             | perl -pe '$_ = lc' file.txt              |
++-----------------------------+------------------------------------------+
+| Uppercase Words             | Convert all letters to uppercase.        |
+|                             |                                          |
+|                             | perl -pe '$_ = uc' file.txt              |
++-----------------------------+------------------------------------------+
+| Print Lines Between         | Print lines between "start" and "end".   |
+| Patterns                    |                                          |
+|                             | perl -ne 'print if /start/../end/'       |
+|                             | file.txt                                 |
++-----------------------------+------------------------------------------+
+| Remove Leading Whitespaces  | Remove leading whitespaces from each     |
+|                             | line.                                    |
+|                             |                                          |
+|                             | perl -pe 's/^\s+//' file.txt             |
++-----------------------------+------------------------------------------+
+| Remove Trailing Whitespaces | Remove trailing whitespaces from each    |
+|                             | line.                                    |
+|                             |                                          |
+|                             | perl -pe 's/\s+$//' file.txt             |
++-----------------------------+------------------------------------------+
+| Extract Emails              | Extract email addresses from file.       |
+|                             |                                          |
+|                             | perl -ne 'print "$1\n" if /(\S+\@\S+)/'  |
+|                             | file.txt                                 |
++-----------------------------+------------------------------------------+
+| Extract URLs                | Extract URLs from file.                  |
+|                             |                                          |
+|                             | perl -ne 'print "$1\n" if                | 
+|                             |                      /(https?:\/\/\S+)/' |
+|                             | file.txt                                 |
++-----------------------------+------------------------------------------+
+| Print File Size             | Print size of each file in current       |
+|                             | directory.                               |
+|                             |                                          |
+|                             | perl -e 'for(<*>){print "$_ - ", -s, "   |
+|                             | bytes\n"}'                               |
++-----------------------------+------------------------------------------+
+| Count Word Frequency        | Count frequency of each word in file.    |
+|                             |                                          |
+|                             | perl -lne '$count{$_}++ for /(\w+)/g;    |
+|                             | END { foreach (keys %count) { print "$_  |
+|                             | = $count{$_}" } }' file.txt              |
++-----------------------------+------------------------------------------+
+| Find Files Larger Than      | Find files larger than a specified size  |
+| Specified Size              | in current directory.                    |
+|                             |                                          |
+|                             | perl -e 'for(<*>){print "$_ - ", -s, "   |
+|                             | bytes\n" if -s > 1024}'                  |
++-----------------------------+------------------------------------------+
+| Split File by Blank Lines   | Split file into segments divided by      |
+|                             | blank lines.                             |
+|                             |                                          |
+|                             | perl -00 -ne 'print                      |
+|                             |              "Segment:\n$_\n---\n"'      |
+|                             | file.txt                                 |
++-----------------------------+------------------------------------------+
+| Find and Replace in Place   | Find and replace text in file in place   |
+|                             | (modify original file).                  |
+|                             |                                          |
+|                             | perl -pi -e 's/old/new/g' file.txt       |
++-----------------------------+------------------------------------------+
+| Sort File Contents          | Sort lines in file alphabetically.       |
+|                             |                                          |
+|                             | perl -e 'print sort <>' file.txt         |
++-----------------------------+------------------------------------------+
+| Extract Lines Matching      | Extract lines matching regex and print.  |
+| Regex                       |                                          |
+|                             | perl -ne 'print if /regex/' file.txt     |
++-----------------------------+------------------------------------------+
+| Insert Text After Pattern   | Insert text after lines matching pattern.|
+|                             |                                          |
+|                             | perl -pe 's/pattern/$&\ninserted text/'  |
+|                             | file.txt                                 |
++-----------------------------+------------------------------------------+
+| Remove Duplicate Lines      | Remove duplicate lines and print.        |
+|                             |                                          |
+|                             | perl -ne 'print unless $seen{$_}++'      |
+|                             | file.txt                                 |
++-----------------------------+------------------------------------------+
+| Extract Substring           | Extract and print substring matching     |
+|                             | regex                                    |
+|                             |                                          |
+|                             | perl -ne 'print "$1\n" if /(regex)/'     |
+|                             | file.txt                                 |
++-----------------------------+------------------------------------------+
+| Count Occurrences of Word   | Count occurrences of a specific word in  |
+|                             | file.                                    |
+|                             |                                          |
+|                             | perl -lne '$count++ if /\bword\b/; END { |
+|                             | print $count }' file.txt                 |
++-----------------------------+------------------------------------------+
+| Find Longest Line           | Find and print the longest line in file. |
+|                             |                                          |
+|                             | perl -lne 'chomp; $max = length($_)      |
+|                             |                          > $max ?        |
+|                             | $_ : $max; END { print $max }' file.txt  |
++-----------------------------+------------------------------------------+
+| Add Suffix to Each Line     | Append a suffix to each line and print.  |
+|                             |                                          |
+|                             | perl -pe 's/$/suffix/' file.txt          |
++-----------------------------+------------------------------------------+
+| Number and Print Paragraphs | Number paragraphs (separated by blank    |
+|                             | lines) and print.                        |
+|                             |                                          |
+|                             | perl -00 -ne '$count++; print "Paragraph |
+|                             | $count:\n$_\n---\n"' file.txt            |
++-----------------------------+------------------------------------------+
+
+###########################################################################
+
+# printf in perl
++--------------------------+--------------------------------------------+
+| Concept                  | Example and Description                    |
++--------------------------+--------------------------------------------+
+| Basic Usage              | Use `printf` for formatted output.         |
+|                          |                                            |
+|                          | my $number = 42;                           |
+|                          | printf("Number: %d\n", $number);           |
++--------------------------+--------------------------------------------+
+| String Formatting        | Format and print a string.                 |
+|                          |                                            |
+|                          | my $name = "Alice";                        |
+|                          | printf("Hello, %s!\n", $name);             |
++--------------------------+--------------------------------------------+
+| Floating-Point Numbers   | Format and print floating-point numbers.   |
+|                          |                                            |
+|                          | my $pi = 3.14159;                          |
+|                          | printf("Pi: %.2f\n", $pi);                 |
++--------------------------+--------------------------------------------+
+| Padding with Spaces      | Pad output with spaces.                    |
+|                          |                                            |
+|                          | my $value = 123;                           |
+|                          | printf("Value: %10d\n", $value);           |
++--------------------------+--------------------------------------------+
+| Left-Justify Text        | Left-justify text with padding.            |
+|                          |                                            |
+|                          | my $text = "left";                         |
+|                          | printf("Text: %-10s\n", $text);            |
++--------------------------+--------------------------------------------+
+| Zero-Padding Numbers     | Pad numbers with leading zeros.            |
+|                          |                                            |
+|                          | my $number = 5;                            |
+|                          | printf("Number: %03d\n", $number);         |
++--------------------------+--------------------------------------------+
+| Multiple Format Specifiers | Use multiple format specifiers.          |
+|                          |                                            |
+|                          | my $str = "Perl";                          |
+|                          | my $num = 100;                             |
+|                          | printf("%s: %d%% complete\n", $str, $num); |
++--------------------------+--------------------------------------------+
+| Scientific Notation      | Format and print numbers in scientific     |
+|                          | notation.                                  |
+|                          |                                            |
+|                          | my $large_num = 123456789;                 |
+|                          | printf("Scientific: %.2e\n", $large_num);  |
++--------------------------+--------------------------------------------+
+| Octal and Hexadecimal    | Format and print numbers in octal and      |
+|                          | hexadecimal.                               |
+|                          |                                            |
+|                          | my $num = 255;                             |
+|                          | printf("Octal: %o\n", $num);               |
+|                          | printf("Hex: %x\n", $num);                 |
++--------------------------+--------------------------------------------+
+| Printing References      | Print the memory address of a reference.   |
+|                          |                                            |
+|                          | my $ref = \@array;                         |
+|                          | printf("Reference: %p\n", $ref);           |
++--------------------------+--------------------------------------------+
+| Custom Field Width       | Specify custom field width dynamically.    |
+|                          |                                            |
+|                          | my $width = 10;                            |
+|                          | my $val = 123;                             |
+|                          | printf("%*d\n", $width, $val);             |
++--------------------------+--------------------------------------------+
+| Custom Precision         | Specify custom precision dynamically.      |
+|                          |                                            |
+|                          | my $precision = 2;                         |
+|                          | my $pi = 3.14159;                          |
+|                          | printf("%.*f\n", $precision, $pi);         |
++--------------------------+--------------------------------------------+
+| Percent Literal          | Print a literal percent sign.              |
+|                          |                                            |
+|                          | my $percent = 50;                          |
+|                          | printf("Progress: %d%%\n", $percent);      |
++--------------------------+--------------------------------------------+
+| Using Array with printf  | Pass an array to `printf` for formatting.  |
+|                          |                                            |
+|                          | my @data = ("Alice", 25);                  |
+|                          | printf("Name: %s, Age: %d\n", @data);      |
++--------------------------+--------------------------------------------+
+| Formatting Booleans      | Print boolean values as true or false.     |
+|                          |                                            |
+|                          | my $bool = 1;                              |
+|                          | printf("Boolean: %s\n", $bool ?            |
+|                          |        "true" : "false");                  |
+|                          |                                            |
++--------------------------+--------------------------------------------+
+| Aligning Columns         | Align text in columns for table formatting.|
+|                          |                                            |
+|                          | printf("%-10s %10s\n", "Name", "Score");   |
+|                          | printf("%-10s %10d\n", "Alice", 95);       |
+|                          | printf("%-10s %10d\n", "Bob", 87);         |
++--------------------------+--------------------------------------------+
+| Formatting Dates         | Print formatted date and time.             |
+|                          |                                            |
+|                          | use POSIX qw(strftime);                    |
+|                          | my $date = strftime("%Y-%m-%d %H:%M:%S",   |
+|                          | localtime);                                |
+|                          | printf("Current date and time: %s\n",      |
+|                          |                                $date);     |
+|                          |                                            |
++--------------------------+--------------------------------------------+
+| Hex Dump                 | Print data in a hex dump format.           |
+|                          |                                            |
+|                          | my $data = "Hello, World!";                |
+|                          | printf("%v02X\n", $data);                  |
++--------------------------+--------------------------------------------+
+| Centering Text           | Center text within a field.                |
+|                          |                                            |
+|                          | my $text = "center";                       |
+|                          | my $width = 20;                            |
+|                          | printf("%*s\n", ($width+length($text))/2,  |
+|                          |                  $text);                   |
+|                          |                                            |
++--------------------------+--------------------------------------------+
+| Uppercase Strings        | Print strings in uppercase.                |
+|                          |                                            |
+|                          | my $text = "uppercase";                    |
+|                          | printf("%s\n", uc($text));                 |
++--------------------------+--------------------------------------------+
+| Lowercase Strings        | Print strings in lowercase.                |
+|                          |                                            |
+|                          | my $text = "LOWERCASE";                    |
+|                          | printf("%s\n", lc($text));                 |
++--------------------------+--------------------------------------------+
+| Title Case Strings       | Print strings in title case.               |
+|                          |                                            |
+|                          | my $text = "title case";                   |
+|                          | $text =~ s/(\w+)/\u\L$1/g;                 |
+|                          | printf("%s\n", $text);                     |
++--------------------------+--------------------------------------------+
+| Formatting Currency      | Print numbers as currency.                 |
+|                          |                                            |
+|                          | my $amount = 1234.56;                      |
+|                          | printf("\$%.2f\n", $amount);               |
++--------------------------+--------------------------------------------+
+| Tabular Data             | Print data in a tabular format.            |
+|                          |                                            |
+|                          | my @header = ("Name", "Age", "City");      |
+|                          | my @row1 = ("Alice", 30, "New York");      |
+|                          | my @row2 = ("Bob", 25, "Los Angeles");     |
+|                          | printf("%-10s %-5s %-15s\n", @header);     |
+|                          | printf("%-10s %-5d %-15s\n", @row1);       |
+|                          | printf("%-10s %-5d %-15s\n", @row2);       |
++--------------------------+--------------------------------------------+
+
