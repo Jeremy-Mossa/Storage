@@ -1380,4 +1380,193 @@
 |                          | printf("%-10s %-5d %-15s\n", @row1);       |
 |                          | printf("%-10s %-5d %-15s\n", @row2);       |
 +--------------------------+--------------------------------------------+
-
+#########################################################################
+## Bundled with core
++--------------------+--------------------------------------------------+
+| Module Name        | Description                                      |
++--------------------+--------------------------------------------------+
+| AnyDBM_File        | Unified DBM interface (ties hashes)              |
+| Attribute::Handlers| Define attribute handlers (experimental)         |
+| AutoLoader         | Load subs on demand                              |
+| AutoSplit          | Split module into autoloadable files             |
+| B                  | Compiler backend interface                       |
+| B::Asmdata         | Data for B assembler (internal)                  |
+| B::Assembler       | Assemble Perl bytecode (internal)                |
+| B::Bblock          | Basic block analysis for B (internal)            |
+| B::Bytecode        | Bytecode compiler backend (internal)             |
+| B::C               | C code generator for Perl (internal)             |
+| B::CC              | Optimized C compiler backend (internal)          |
+| B::Debug           | Debug info for B compiler (internal)             |
+| B::Deparse         | Convert Perl bytecode to source                  |
+| B::Disassembler    | Disassemble Perl bytecode (internal)             |
+| B::Lint            | Syntax checker for Perl (internal)               |
+| B::Showlex         | Show lexical variables in B (internal)           |
+| B::Stackobj        | Stack object helper for B (internal)             |
+| B::Terse           | Terse B compiler output (internal)               |
+| B::Xref            | Cross-reference generator for B (internal)       |
+| Benchmark          | Performance timing and comparison                |
+| ByteLoader         | Load bytecode files                              |
+| Carp               | Better error reporting (croak, confess)          |
+| CGI                | CGI script utilities                             |
+| CGI::Carp          | CGI-friendly error reporting                     |
+| CGI::Cookie        | Manage HTTP cookies in CGI                       |
+| CGI::Push          | Server push for CGI (rarely used)                |
+| CPAN               | CPAN module installer interface                  |
+| CPAN::FirstTime    | CPAN initial config helper                       |
+| CPAN::Nox          | CPAN without XS module support                   |
+| Cwd                | Get current working directory                    |
+| DB_File            | Berkeley DB interface                            |
+| Data::Dumper       | Serialize Perl data to string                    |
+| Devel::DProf       | Profile Perl code execution                      |
+| Devel::SelfStubber | Generate stubbed module code                     |
+| Digest::MD5        | MD5 hashing function                             |
+| Digest::SHA1       | SHA-1 hashing function                           |
+| DirHandle          | Directory handle object                          |
+| Dumpvalue          | Dump Perl variable contents                      |
+| DynaLoader         | Dynamic module loading (internal)                |
+| English            | English names for punctuation vars               |
+| Env                | Access environment variables                     |
+| Errno              | System errno constants                           |
+| Exporter           | Export functions and variables                   |
+| ExtUtils::Command  | Utilities for MakeMaker commands                 |
+| ExtUtils::Embed    | Embed Perl in C programs                         |
+| ExtUtils::Install  | Install Perl module files                        |
+| ExtUtils::Installed| List installed modules                           |
+| ExtUtils::Liblist  | Library list for MakeMaker                       |
+| ExtUtils::MM_Cygwin| MakeMaker for Cygwin                             |
+| ExtUtils::MM_OS2   | MakeMaker for OS/2                               |
+| ExtUtils::MM_Unix  | MakeMaker for Unix                               |
+| ExtUtils::MM_VMS   | MakeMaker for VMS                                |
+| ExtUtils::MM_Win32 | MakeMaker for Win32                              |
+| ExtUtils::MakeMaker| Generate Makefiles for modules                   |
+| ExtUtils::Manifest | Manage MANIFEST files                            |
+| ExtUtils::Miniperl | Generate miniperl executable                     |
+| ExtUtils::         |                                                  |
+|        Mkbootstrap | Create bootstrap files                           |
+| ExtUtils::         |                                                  | 
+|         Mksymlists | Create linker symbol lists                       |
+| ExtUtils::Packlist | Manage .packlist files                           |
+| ExtUtils::testlib  | Test module lib paths                            |
+| Fcntl              | File control constants                           |
+| File::Basename     | Parse file paths into dir/file                   |
+| File::CheckTree    | Validate directory trees                         |
+| File::Compare      | Compare files or filehandles                     |
+| File::Copy         | Copy/move files                                  |
+| File::DosGlob      | DOS-style globbing (Windows)                     |
+| File::Find         | Traverse directory trees                         |
+| File::Path         | Create/remove directory trees                    |
+| File::Spec         | Portable file path handling                      |
+| File::Spec::       |                                                  |
+|        Functions   | File::Spec utility functions                     |
+| File::Spec::Mac    | File::Spec for MacOS                             |
+| File::Spec::OS2    | File::Spec for OS/2                              |
+| File::Spec::Unix   | File::Spec for Unix                              |
+| File::Spec::VMS    | File::Spec for VMS                               |
+| File::Spec::Win32  | File::Spec for Win32                             |
+| File::Temp         | Safe temporary file creation                     |
+| FileHandle         | Filehandle object interface                      |
+| FindBin            | Locate script’s directory                        |
+| GDBM_File          | GDBM database interface                          |
+| Getopt::Long       | Parse command-line options                       |
+| Getopt::Std        | Parse simple command-line options                |
+| I18N::Collate      | Collation for Unicode (deprecated)               |
+| IO                 | Load IO modules (umbrella)                       |
+| IO::Dir            | Directory I/O object                             |
+| IO::File           | File I/O object                                  |
+| IO::Handle         | Base I/O handle class                            |
+| IO::Pipe           | Pipe I/O object                                  |
+| IO::Poll           | Poll-based I/O multiplexing                      |
+| IO::Seekable       | Seekable I/O base class                          |
+| IO::Select         | Select-based I/O multiplexing                    |
+| IO::Socket         | Socket I/O object                                |
+| IO::Socket::INET   | Internet socket I/O                              |
+| IO::Socket::UNIX   | Unix domain socket I/O                           |
+| IPC::Msg           | System V message queue IPC                       |
+| IPC::Open2         | Open process with two-way pipe                   |
+| IPC::Open3         | Open process with three-way pipe                 |
+| IPC::Semaphore     | System V semaphore IPC                           |
+| IPC::SysV          | System V IPC constants                           |
+| Math::BigFloat     | Arbitrary precision floating-point               |
+| Math::BigInt       | Arbitrary precision integers                     |
+| Math::Complex      | Complex number math                              |
+| Math::Trig         | Trigonometric functions                          |
+| NDBM_File          | NDBM database interface                          |
+| Net::Cmd           | Base for network commands                        |
+| Net::FTP           | FTP client                                       |
+| Net::NNTP          | NNTP client (news)                               |
+| Net::POP3          | POP3 client (email)                              |
+| Net::SMTP          | SMTP client (email)                              |
+| Net::Time          | Network time client                              |
+| O                  | Generic compiler interface                       |
+| ODBM_File          | ODBM database interface                          |
+| Opcode             | Control Perl opcodes (security)                  |
+| POSIX              | POSIX interface (system calls)                   |
+| Pod::Checker       | Check POD syntax                                 |
+| Pod::Find          | Find POD files                                   |
+| Pod::Functions     | POD function descriptions                        |
+| Pod::Html          | Convert POD to HTML                              |
+| Pod::InputObjects  | POD input object model                           |
+| Pod::Man           | Convert POD to man pages                         |
+| Pod::ParseUtils    | POD parsing utilities                            |
+| Pod::Parser        | Base POD parser                                  |
+| Pod::Plainer       | Simplify POD output                              |
+| Pod::Select        | Select POD sections                              |
+| Pod::Text          | Convert POD to plain text                        |
+| Pod::Usage         | Extract usage from POD                           |
+| SDBM_File          | SDBM database interface                          |
+| Safe               | Restricted Perl execution                        |
+| Search::Dict       | Binary search in sorted files                    |
+| SelectSaver        | Save/restore selected filehandle                 |
+| SelfLoader         | Load subs on demand (alternative)                |
+| Shell              | Run shell commands (basic)                       |
+| Socket             | Socket functions (inet_aton, etc.)               |
+| Storable           | Serialize Perl data structures                   |
+| Symbol             | Generate anonymous globs                         |
+| Sys::Hostname      | Get hostname                                     |
+| Sys::Syslog        | System logging interface                         |
+| Term::Cap          | Terminal capability interface                    |
+| Term::Complete     | Word completion for prompts                      |
+| Term::ReadLine     | Readline interface (stub)                        |
+| Test               | Simple test framework                            |
+| Test::Harness      | Run Perl test scripts                            |
+| Text::Abbrev       | Generate abbreviations                           |
+| Text::ParseWords   | Parse text into words                            |
+| Text::Soundex      | Soundex algorithm for names                      |
+| Text::Tabs         | Expand/collapse tabs                             |
+| Text::Wrap         | Wrap text into paragraphs                        |
+| Tie::Array         | Tie arrays to custom storage                     |
+| Tie::Handle        | Tie filehandles to custom storage                |
+| Tie::Hash          | Tie hashes to custom storage                     |
+| Tie::RefHash       | Tie hashes with reference keys                   |
+| Tie::Scalar        | Tie scalars to custom storage                    |
+| Tie::SubstrHash    | Fixed-size hash with substring keys              |
+| Time::Local        | Convert time to/from epoch seconds               |
+| Time::gmtime       | GMT time functions                               |
+| Time::localtime    | Local time functions                             |
+| Time::tm           | Internal time struct (helper)                    |
+| UNIVERSAL          | Base class for all objects                       |
+| User::grent        | Group entry object                               |
+| User::pwent        | Password entry object                            |
+| VMS::DCLsym        | VMS DCL symbol access                            |
+| VMS::Filespec      | VMS file path utilities                          |
+| VMS::Stdio         | VMS stdio extensions                             |
+| XSLoader           | Simplified XS loading                            |
+| attributes         | Attribute handling (internal)                    |
+| base               | Base class importer                              |
+| bigrat             | Rational number math (big)                       |
+| blib               | Use uninstalled module dirs                      |
+| bytes              | Force byte semantics                             |
+| constant           | Define constants                                 |
+| fields             | Compile-time field declaration                   |
+| integer            | Force integer semantics                          |
+| less               | Request less resource usage (stub)               |
+| lib                | Manipulate @INC at compile time                  |
+| locale             | Enable POSIX locale support                      |
+| ops                | Restrict Perl operations                         |
+| overload           | Operator overloading                             |
+| re                 | Regular expression pragmas                       |
+| strict             | Enforce strict coding rules                      |
+| vars               | Predeclare variables                             |
+| vmsish             | VMS-specific pragmas                             |
+| warnings           | Enable warning controls                          |
++--------------------+--------------------------------------------------+
