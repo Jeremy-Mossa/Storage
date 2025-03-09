@@ -1,0 +1,4 @@
+1) include use strict, warnings, utf8, v5.40, autodie.
+2) include a detailed commentary accompanying every line
+of code.
+3) 
